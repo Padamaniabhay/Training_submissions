@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Learn basic html
+        </title>
+        <link rel="icon" type="image/x-icon" href="./icon.png"/>
+        <style>
+            table, th, td{
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+            tr:nth-child(even){
+                background-color: antiquewhite;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <h1 style="color: royalblue; padding: 20px; background-color: yellowgreen;">Heading tag 1</h1>
+            <p>p tag</p>
+            <a href="https://www.google.com/">google here</a><br/>
+            <a href="mailto:padamani@simformsolutions.com">mail me</a>
+            
+
+            <table>
+                <tr>
+                    <th>col 1</th>
+                    <th>col 2</th>
+                    <th>col 3</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                </tr>
+            </table>
+<!--
+    comment
+-->
+<br/>
+<br/>
+<details>
+    <summary>title</summary>
+    <p>here is detailed summary</p>
+</details>
+<br/>
+<br/>
+            <img src="./image.webp" alt="image" width="500px" height="500px" usemap="#mymap"/>
+            
+            <map name="mymap">
+                <area shape="circle" coords="200 200 100" alt="this is map" title="here is map used" href="https://www.google.com/"/>
+            </map>
+            <br/>
+            <h2>demo of picture</h2>
+            <picture>
+                <source media="(min-width:650px)" srcset="icon.png" />
+                <source media="(max-width:650px)" srcset="image.webp" />
+                <img src="./image.webp" alt="image" width="500px" height="500px" usemap="#mymap"/>
+</picture>
+
+
+            <ul style="list-style-type:square;">
+                <li>list 1</li>
+                <li>list 2</li>
+                <li>list 3</li>
+                <li>list 4</li>
+            </ul>
+            
+            
+            <ol start="i">
+                <li>list 1</li>
+                <li>list 2</li>
+                <li>list 3</li>
+                <li>list 4</li>
+            </ol>
+        </div>
+    </body>
+</html>
