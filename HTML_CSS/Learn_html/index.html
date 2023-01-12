@@ -13,10 +13,84 @@
             tr:nth-child(even){
                 background-color: antiquewhite;
             }
+            maindiv {
+                width: 100%;
+                padding: 0%;
+                margin: 0%;
+            }
+            nav{
+                width: 100%;
+                height: 200px;
+                background-color: yellow;
+            }
+            nav-div{
+                width: 50%;
+                height: 150px;
+            }
+            #logo{
+                background-color: brown;
+                font-size: 35px;
+                color: aquamarine;
+                align-items: center;
+                float:left;
+                width: 50%;
+                line-height: 150px;
+                text-align: center;                
+            }
+            #navigation{
+                background-color: aqua;
+                font-size: 35px;
+                color:crimson;
+                align-items: center;
+                float: right;
+                width: 50%;
+                line-height: 150px;
+                text-align: center;                
+            }
+            nav::after{
+                display:block;
+                content: "";
+                clear: both;
+            }
+
+            .flexbox{
+                display: flex;
+                height: 300px;
+                background-color: gray;
+                border: 2px solid red;
+                justify-content: space-around;
+                align-items: center;
+            }
+
+            .flexitems{
+                width: 122px;
+                height: 122px;
+                background-color: blue;
+                margin: 5px;
+                border: 2px solid black;
+                text-align: center;
+                line-height: 122px;
+            }
+
         </style>
     </head>
     <body>
-        <div>
+        <div id="maindiv">
+
+            <nav class="nav">
+                    <div class="nav-div" id="logo">log</div>
+                    <div class="nav-div" id="navigation">navigation</div>
+            </nav>
+
+<div class="flexbox">
+    <div class="flexitems">1</div>
+    <div class="flexitems">2</div>
+    <div class="flexitems">3</div>
+    <div class="flexitems">4</div>
+</div>
+
+
+
             <h1 style="color: royalblue; padding: 20px; background-color: yellowgreen;">Heading tag 1</h1>
             <p>p tag</p>
             <a href="https://www.google.com/">google here</a><br/>
@@ -66,7 +140,7 @@
             <picture>
                 <source media="(min-width:650px)" srcset="icon.png" />
                 <source media="(max-width:650px)" srcset="image.webp" />
-                <img src="./image.webp" alt="image" width="500px" height="500px" usemap="#mymap"/>
+                <img src="./image.webp" alt="image" width="500px" height="500px"/>
 </picture>
 
 
@@ -84,6 +158,16 @@
                 <li>list 3</li>
                 <li>list 4</li>
             </ol>
+
+
+
+            <form>
+                <label for="fname">First Name: </label>
+                <input type="text" id="fname"/> </form><br/>
+                <label for="lname">Last Name: </label>
+                <input type="text" id="lname"/><br/>
+                <input type="submit" id="submit" />
+            </form>
         </div>
     </body>
 </html>
