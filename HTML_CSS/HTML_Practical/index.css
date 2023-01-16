@@ -1,13 +1,9 @@
 *{
     padding: 0%;
     margin: 0%;
+    font-family: 'Roboto','sans-serif';
 }
 
-
-
-.logo{
-    padding: 10px;
-}
 
 nav{
     width: 100%;
@@ -20,6 +16,8 @@ nav{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    padding-left: 15%;
+    padding-right: 15%;
 }
 
 .logo-img{
@@ -47,21 +45,22 @@ nav{
 
 .searchbar{
     align-items: center;
-
+    
 }
 
+
 .search{
-    padding: 10px;
+    padding: 1%;
     width: 400px;
     border: none;
 }
 
 #search-icon{
     z-index: 10;
-    padding: 8px;
+    padding: 3px;
     background-color: white;
     border-left: none;
-
+    cursor: pointer;
 }
 
 .searchbar{
@@ -87,4 +86,172 @@ nav{
     font-size: 16px;
     height: 20px;
     font-style: normal;
+    cursor: pointer;
+    border: none;
+    background-color: #2370f4;
+
+}
+
+.more-list{
+    list-style-type: none;
+    width: 150px;
+    padding: 15px;
+    background-color: white;
+    color: black;
+    font-size: medium;
+    font-weight: 500;
+    border-bottom:0.5px solid lightgray;
+    cursor: pointer;
+
+}
+
+.more-options{
+    display:none;
+    position: absolute;
+    z-index: 1;
+}
+
+.more{
+    position: relative;
+}
+
+.login{
+    position: relative;
+}
+
+.more:hover .more-options{
+    display: block;
+}
+
+.login:hover .more-options{
+    display: block;
+}
+
+.category{
+    padding-left: 15%;
+    padding-right: 15%;
+    padding-top: 1%;
+    padding-bottom: 5%;
+    height: 100px;
+    border-bottom: 1px solid gray;
+    box-shadow: 0px 0px 5px gray;
+    display: flex;
+    justify-items: center;
+    justify-content: space-around;
+}   
+
+.category-content{
+    align-items: center;
+    cursor: pointer;
+}
+
+.category-text{
+    text-align: center;
+    font-weight: 600;
+    font-size: medium;
+}
+
+.category-content:hover{
+    color: #2370f4;
+}
+
+.carouseldiv{
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 1%;
+}
+
+.card{
+    width: 100%;
+    height: 366px;
+    border: none;
+}
+
+.cardcss{
+    width: 100%;
+    height: 200px;
+}
+
+.card-body{
+    align-items: center;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+}
+
+.t1{
+    font-weight: 600;
+}
+
+
+.t2{
+    color: #388e3c;
+    font-size: 18px;
+}
+
+.t3{
+    color: #212121;
+    font-weight: 100;
+    font-size: 14px;
+}
+
+
+.multiitemcarousel{
+    padding-top: 3%;
+    padding-left: 5%;
+    padding-right: 5%;
+    display: flex;
+    border: none;
+}
+
+
+.top-offers{
+    width: 300px;
+    height: 366px;
+    margin-right: 3%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.top-offers-head{
+    text-align: center;
+}
+
+.top-offers-btn{
+    background-color: #2370f4;
+    color: white;
+    padding: 3%;
+    border: none;
+    font-weight: 700;
+    font-size: 14px;
+    margin-top: 5%;
+}
+
+.noise-ad{
+    width: 300px;
+    height: 366px;
+}
+
+
+.carousel-control-prev-icon{
+    background-color: #212121;
+    position: absolute;
+    right: 80%;   
+}
+
+.carousel-control-next-icon{
+    background-color: #212121;
+    position: absolute;
+    left: 80%;
+}
+
+#carouselExampleControlsNoTouching{
+    position: relative;
+    width: 100%;
+}
+#carouselExampleControlsNoTouching1{
+    position: relative;
+    width: 100%;
 }
