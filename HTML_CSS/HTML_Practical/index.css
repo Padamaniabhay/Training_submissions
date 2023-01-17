@@ -257,15 +257,21 @@ nav {
 
 
 .carousel-control-prev-icon {
-    background-color: #212121;
+    background-color: #ebd4d4;
     position: absolute;
     right: 80%;
+    background-image: url(./assets/pointer-left-svgrepo-com.svg);
+    height: 45%;
+    width: 20%;
 }
 
 .carousel-control-next-icon {
-    background-color: #212121;
+    background-color: #ebd4d4;
     position: absolute;
     left: 80%;
+    background-image: url(./assets/pointer-right-svgrepo-com.svg);
+    width: 20%;
+    height: 45%;
 }
 
 #carouselExampleControlsNoTouching {
@@ -278,11 +284,11 @@ nav {
     width: 100%;
 }
 
-body{
+body {
     position: relative;
 }
 
-.threedotmenu{
+.threedotmenu {
     display: none;
     position: absolute;
     top: 0%;
@@ -364,6 +370,17 @@ body{
     }
 
 
+    .carousel-control-prev-icon {
+        height: 30%;
+        width: 20%;
+    }
+
+    .carousel-control-next-icon {
+        width: 20%;
+        height: 30%;
+    }
+
+
 }
 
 @media only screen and (max-width: 480px) {
@@ -402,7 +419,7 @@ body{
         color: white;
     }
 
-    .sm-login{
+    .sm-login {
         margin-top: 10%;
         text-align: center;
     }
