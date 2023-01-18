@@ -300,7 +300,68 @@ body {
     position: fixed;
 }
 
+.threedotmenu>div:first-child {
+    width: 100%;
+    height: 56px;
+    background-color: #2370f4;
+    display: flex;
+    justify-content: space-between;
+}
 
+.sm-loginsignup {
+    padding-left: 5%;
+    color: white;
+    height: 56px;
+    padding-top: 12px;
+    font-size: 20px;
+}
+
+.sm-loginbtn {
+    background-color: aliceblue;
+    color: #2370f4;
+    height: 30px;
+    width: 35px;
+    align-self: center;
+}
+
+
+.threedotmenu>div>p {
+    font-weight: 700;
+    padding-top: -5%;
+    margin: 2%;
+    padding-left: 10%;
+    font-size: 14px;
+}
+
+hr {
+    margin: 1%;
+    padding: 0%;
+}
+
+.imgflexdiv {
+    width: 100%;
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-bottom: 5%;
+}
+
+.imgflexrowdiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.boximg {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.boximage{
+    height: 250px;
+}
 
 @media only screen and (max-width: 967px) {
     .boximg {
