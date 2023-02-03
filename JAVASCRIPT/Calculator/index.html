@@ -1,19 +1,113 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <title>Scientific Calculator
-    </title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <head>
+    <title>Scientific Calculator</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="./index.js" defer></script>
-    <link rel="stylesheet" href="./index.css">
-</head>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
 
-<body>
+  <body>
     <div>
-        Hello
+      <div class="grid-container">
+        <div class="input-display">
+          <input type="text" id="inputdisplay" />
+        </div>
+        <div class="deg" id="deg">DEG</div>
+        <div>F-E</div>
+        <div class="grid-start">MC</div>
+        <div>MR</div>
+        <div>M+</div>
+        <div>M-</div>
+        <div>MS</div>
+        <div class="trigonometry">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            x="0px"
+            y="0px"
+            height="15"
+            viewBox="0 0 50 50"
+          >
+            <path
+              d="M 48 0 C 46.894531 0 46 0.894531 46 2 C 46 2.171875 46.019531 2.339844 46.0625 2.5 L 2.5 46.0625 C 2.339844 46.019531 2.171875 46 2 46 C 0.894531 46 0 46.894531 0 48 C 0 49.105469 0.894531 50 2 50 C 2.738281 50 3.371094 49.597656 3.71875 49 L 46.28125 49 C 46.628906 49.597656 47.261719 50 48 50 C 49.105469 50 50 49.105469 50 48 C 50 47.261719 49.597656 46.628906 49 46.28125 L 49 3.71875 C 49.597656 3.371094 50 2.738281 50 2 C 50 0.894531 49.105469 0 48 0 Z M 47 4.4375 L 47 37 L 37 37 L 37 47 L 15.9375 47 C 15.695313 43.90625 14.472656 41.101563 12.53125 38.90625 Z M 39 39 L 47 39 L 47 46.28125 C 46.699219 46.457031 46.457031 46.699219 46.28125 47 L 39 47 Z M 11.09375 40.34375 C 12.675781 42.164063 13.699219 44.460938 13.9375 47 L 4.4375 47 Z"
+            ></path>
+          </svg>
+          Trigonometry
+          <div class="grid-container sub-section">
+            <div id="sin">sin</div>
+            <div id="cos">cos</div>
+            <div id="tan">tan</div>
+            <div id="hyp">hyp</div>
+            <div id="sec">sec</div>
+            <div id="cosec">csc</div>
+            <div id="cot">cot</div>
+          </div>
+        </div>
+        <div class="function">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            x="0px"
+            y="0px"
+            height="15"
+            viewBox="0 0 30 30"
+          >
+            <path
+              d="M22.047,3c-6.277,0-6.98,7.011-7.347,9h-3.268l-0.417,2h3.339c-1.855,11.024-2.65,11.781-3.565,11.781 c-0.83-2.323-1.434-3.066-2.692-3.066c-1.764,0-2.122,1.454-2.122,2.005C5.975,25.958,7,27,9,27c7.403,0,7.993-6.073,9.153-13h3.416 l0.417-2h-3.528c0.371-2.876,0.769-7.035,1.862-7.781c0.181,0.48,0.848,3.066,2.696,3.066c1.986,0,2.152-1.852,2.152-2.07 C25.166,4.551,24.792,3,22.047,3z"
+            ></path>
+          </svg>
+          Function
+          <div class="grid-container sub-section">
+            <div id="sin">sin</div>
+            <div id="cos">cos</div>
+            <div id="tan">tan</div>
+            <div id="hyp">hyp</div>
+            <div id="sec">sec</div>
+            <div id="cosec">csc</div>
+            <div id="cot">cot</div>
+          </div>
+        </div>
+        <div class="grid-start">2<sup>nd</sup></div>
+        <div>Π</div>
+        <div>e</div>
+        <div id="clear">C</div>
+        <div id="bkSpace">⌫</div>
+        <div>x<sup>2</sup></div>
+        <div>1/x</div>
+        <div>|x|</div>
+        <div>exp</div>
+        <div>mod</div>
+        <div id="sqrt"><sup>2</sup>√x</div>
+        <div>(</div>
+        <div>)</div>
+        <div>n!</div>
+        <div>÷</div>
+        <div>x<sup>y</sup></div>
+        <div class="numbtn">7</div>
+        <div class="numbtn">8</div>
+        <div class="numbtn">9</div>
+        <div>X</div>
+        <div>10<sup>x</sup></div>
+        <div class="numbtn">4</div>
+        <div class="numbtn">5</div>
+        <div class="numbtn">6</div>
+        <div>-</div>
+        <div id="log">log</div>
+        <div class="numbtn">1</div>
+        <div class="numbtn">2</div>
+        <div class="numbtn">3</div>
+        <div>+</div>
+        <div id="ln">ln</div>
+        <div>+/-</div>
+        <div>0</div>
+        <div>.</div>
+        <div class="equal">=</div>
+      </div>
     </div>
-</body>
+  </body>
+</html>
