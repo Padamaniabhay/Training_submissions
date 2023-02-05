@@ -37,9 +37,31 @@ class Calculator {
     this.input.value = this.input.value.slice(0, -1);
   }
 
+
   evaluate() {
-    this.output.value = eval(this.input.value);
-    this.input.value = "";
+
+    try {
+
+      const str = this.input.value;
+
+      let newstr = str.replaceAll(/\d+\!/g, (x) => {
+        const n = parseInt(x.slice(0, -1));
+        return this.fact(n);
+      })
+
+      newstr = newstr.replaceAll('log', () => {
+        return 'Math.log10'
+      })
+      newstr = newstr.replaceAll('ln', () => {
+        return 'Math.log'
+      })
+
+      this.output.value = eval(newstr) || '';
+
+    }
+    catch (err) {
+      this.output.value = 'ERROR'
+    }
   }
 
   addBrackets() {
@@ -92,10 +114,16 @@ sqrtBtn.addEventListener("click", c.mathOps.bind(c, "sqrt"));
 sinBtn.addEventListener("click", c.mathOps.bind(c, "sin"));
 cosBtn.addEventListener("click", c.mathOps.bind(c, "cos"));
 tanBtn.addEventListener("click", c.mathOps.bind(c, "tan"));
-logBtn.addEventListener("click", c.mathOps.bind(c, "log10"));
-lnBtn.addEventListener("click", c.mathOps.bind(c, "log"));
+logBtn.addEventListener("click", () => {
+  c.input.value += 'log(';
+  c.OpenBracketCnt++;
+});
+lnBtn.addEventListener("click", () => {
+  c.input.value += 'ln(';
+  c.OpenBracketCnt++;
+});
 factBtn.addEventListener("click", () => {
-  c.output.value = c.fact(c.input.value)
+  c.input.value += "!";
 });
 
 
@@ -119,13 +147,13 @@ closeBracketsBtn.addEventListener('click', c.closeBrackets.bind(c));
 
 
 
-
-
-//toggleing degree and radian
+//toggleing degree and radian button
 degbtn.addEventListener("click", () => {
   degbtn.innerHTML = degbtn.innerHTML === "RAD" ? "DEG" : "RAD";
 });
 
+
+//dropdown event listners
 trigonomatrybtn[0].addEventListener("click", () => {
   trigonomatrybtn[0].childNodes[3].classList.toggle("visible");
   functionbtn[0].childNodes[3].className = "grid-container sub-section";
