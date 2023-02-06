@@ -24,11 +24,11 @@
         <div class="output-display">
           <input type="text" id="outputdisplay" />
         </div>
-        <div class="grid-start">MC</div>
-        <div>MR</div>
-        <div>M+</div>
-        <div>M-</div>
-        <div>MS</div>
+        <div class="grid-start" id="mc">MC</div>
+        <div id="mr">MR</div>
+        <div id="mplus">M+</div>
+        <div id="mminus">M-</div>
+        <div id="ms">MS</div>
         <div class="trigonometry">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -46,9 +46,8 @@
             <div id="sin">sin</div>
             <div id="cos">cos</div>
             <div id="tan">tan</div>
-            <div id="hyp">hyp</div>
             <div id="sec">sec</div>
-            <div id="cosec">csc</div>
+            <div id="csc">csc</div>
             <div id="cot">cot</div>
           </div>
         </div>
@@ -66,36 +65,32 @@
           </svg>
           Function
           <div class="grid-container sub-section">
-            <div id="sin">sin</div>
-            <div id="cos">cos</div>
-            <div id="tan">tan</div>
-            <div id="hyp">hyp</div>
-            <div id="sec">sec</div>
-            <div id="cosec">csc</div>
-            <div id="cot">cot</div>
+            <div id="floor">⌊X⌋</div>
+            <div id="ceil">⌈X⌉</div>
+            <div id="rand">rand</div>
           </div>
         </div>
-        <div class="grid-start">2<sup>nd</sup></div>
-        <div>Π</div>
-        <div>e</div>
+        <div class="grid-start" id="cube">x<sup>3</sup></div>
+        <div id="pi">Π</div>
+        <div id="e">e</div>
         <div id="clear">C</div>
         <div id="bkSpace">⌫</div>
-        <div>x<sup>2</sup></div>
-        <div>1/x</div>
-        <div>|x|</div>
-        <div>exp</div>
-        <div>mod</div>
+        <div id="sqr">x<sup>2</sup></div>
+        <div id="reverse">1/x</div>
+        <div id="abs">|x|</div>
+        <div id="exp">exp</div>
+        <div id="mod">mod</div>
         <div id="sqrt"><sup>2</sup>√x</div>
         <div id="addBracketsBtn">(</div>
         <div id="closeBracketsBtn">)</div>
         <div id="factBtn">n!</div>
         <div id="divBtn">÷</div>
-        <div>x<sup>y</sup></div>
+        <div id="pow">x<sup>y</sup></div>
         <div class="number">7</div>
         <div class="number">8</div>
         <div class="number">9</div>
         <div id="mulBtn">X</div>
-        <div>10<sup>x</sup></div>
+        <div id="tenExp">10<sup>x</sup></div>
         <div class="number">4</div>
         <div class="number">5</div>
         <div class="number">6</div>
@@ -106,7 +101,7 @@
         <div class="number">3</div>
         <div id="plusBtn">+</div>
         <div id="ln">ln</div>
-        <div>+/-</div>
+        <div id="signChange">+/-</div>
         <div class="number">0</div>
         <div class="number">.</div>
         <div id="equal">=</div>
