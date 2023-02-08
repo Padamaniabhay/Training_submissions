@@ -29,6 +29,10 @@ nav {
   padding-right: 20%;
 }
 
+.nav-disable {
+  display: none;
+}
+
 .logo {
   width: 20%;
   height: 100%;
@@ -38,11 +42,7 @@ nav {
   font-size: 30px;
 }
 
-.navigations {
-  width: 30%;
-  display: flex;
-  justify-content: space-evenly;
-}
+/* aside section  */
 
 aside {
   z-index: 10;
@@ -53,12 +53,6 @@ aside {
   float: left;
   display: flex;
   flex-direction: column;
-}
-
-.main-section {
-  width: 100%;
-  margin-left: 12%;
-  background-color: azure;
 }
 
 .navigation-tb {
@@ -73,12 +67,28 @@ aside {
   background-color: white;
 }
 
+/* main section */
+
+.main-section {
+  width: 100%;
+  margin-left: 12%;
+  background-color: azure;
+}
+
+/* configuration for all section */
+
 #home,
 #aboutus,
 #images,
 #services {
   padding-left: 100px;
-  padding-bottom: 100px;
+  padding-bottom: 50px;
+}
+
+/* services section */
+
+#services {
+  padding-bottom: 200px;
 }
 
 .title {
@@ -132,6 +142,8 @@ aside {
   padding-bottom: 100px;
 }
 
+/* images section  */
+
 #images {
   padding: 50px 100px;
 }
@@ -162,6 +174,67 @@ aside {
   height: 45%;
 }
 
+.main-carousel {
+  height: 600px;
+  place-items: center;
+  display: grid;
+  position: relative;
+}
+
+.container {
+  width: 1000px;
+  height: 400px;
+  min-width: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 10px 10px 5px #aaaaaa;
+}
+.slider {
+  width: 100%;
+  height: 100%;
+  min-width: 100%;
+  display: flex;
+  object-fit: fill;
+  gap: 5px;
+  transition: transform 0.8s ease;
+}
+
+.slider img {
+  width: 100%;
+  height: 100%;
+  min-width: 100%;
+  object-fit: fill;
+  border-radius: 10px;
+}
+
+#prev,
+#next {
+  width: 50px;
+  height: 120px;
+  position: absolute;
+  top: 45%;
+  cursor: pointer;
+  background-color: #cccccc;
+}
+#prev:hover,
+#next:hover {
+  background-color: #555252;
+}
+
+#prev {
+  left: 0%;
+}
+
+#next {
+  right: 0%;
+}
+
+#prev.disable,
+#next.disable {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
 .imgheight {
   height: 400px;
 }
@@ -173,17 +246,22 @@ aside {
   height: 400px;
   gap: 60px;
   padding: 2%;
+  border-radius: 10px;
 }
 
 .project:hover {
   background-color: rgb(217, 240, 240);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  border-radius: 10px;
+}
+
+.project-image {
+  width: 100%;
+  height: 100%;
 }
 
 .project-image > img {
   width: 100%;
-  height: 90%;
+  height: 100%;
   border-radius: 10px;
 }
 
@@ -209,6 +287,7 @@ aside {
   line-height: 3;
 }
 
+/* services section */
 #services {
   padding-top: 100px;
   line-height: 2;
@@ -224,59 +303,4 @@ aside {
 .services-flex > div {
   width: 50%;
   padding-top: 5%;
-}
-
-.main-carousel {
-  height: 700px;
-  place-items: center;
-  display: grid;
-  position: relative;
-}
-
-.container {
-  width: 1000px;
-  height: 500px;
-  overflow: hidden;
-}
-
-.slider {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  object-fit: fill;
-  gap: 15px;
-  transition: transform 0.8s ease;
-}
-
-.slider img {
-  width: 100%;
-  object-fit: fill;
-  border-radius: 10px;
-}
-
-#prev,
-#next {
-  width: 50px;
-  height: 50px;
-  position: absolute;
-  top: 50%;
-  cursor: pointer;
-}
-
-#prev {
-  left: 12%;
-}
-
-#next {
-  right: 12%;
-}
-
-#prev.disable,
-#next.disable {
-  pointer-events: none;
-  opacity: 0.5;
-}
-
-.nav-disable {
-  display: none;
 }

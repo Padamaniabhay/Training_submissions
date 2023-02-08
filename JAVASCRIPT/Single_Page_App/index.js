@@ -19,7 +19,7 @@ homeBtn.addEventListener("click", () => {
 aboutusBtn.addEventListener("click", () => {
   aboutus.scrollIntoView({
     behavior: "smooth",
-    block: "end",
+    block: "start",
     inline: "nearest",
   });
 });
@@ -35,7 +35,7 @@ imagesBtn.addEventListener("click", () => {
 servicesBtn.addEventListener("click", () => {
   services.scrollIntoView({
     behavior: "smooth",
-    block: "end",
+    block: "start",
     inline: "nearest",
   });
 });
@@ -82,7 +82,7 @@ const width = imgs[idx].clientWidth;
 
 next.addEventListener("click", () => {
   idx++;
-  slider.style.transform = `translate(${-idx * (width + 15)}px)`;
+  slider.style.transform = `translate(${-idx * (width + 4)}px)`;
 
   if (idx === imgs.length - 1) {
     next.classList.add("disable");
@@ -92,7 +92,7 @@ next.addEventListener("click", () => {
 });
 prev.addEventListener("click", () => {
   idx--;
-  slider.style.transform = `translate(${-idx * (width + 15)}px)`;
+  slider.style.transform = `translate(${-idx * (width + 4)}px)`;
 
   if (idx === 0) {
     prev.classList.add("disable");
