@@ -1,0 +1,233 @@
+body {
+  margin: 0%;
+  padding: 0%;
+  scroll-behavior: smooth;
+  position: relative;
+}
+
+body > div {
+  display: flex;
+  height: 100%;
+  position: relative;
+  padding-top: 70px;
+}
+
+hr {
+  border: 2px solid black;
+}
+
+nav {
+  width: 100%;
+  height: 70px;
+  border-bottom: 3px solid black;
+  position: fixed;
+  z-index: 10;
+  background-color: #cee9e9;
+  display: flex;
+  justify-content: space-between;
+  padding-right: 20%;
+}
+/* 
+.hidenav {
+  margin-top: -70px;
+} */
+
+.logo {
+  width: 20%;
+  height: 100%;
+  padding-top: 12px;
+  text-align: center;
+  font-weight: 900;
+  font-size: 30px;
+}
+
+.navigations {
+  width: 30%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+aside {
+  z-index: 10;
+  width: 12%;
+  height: 100%;
+  background-color: lightgray;
+  position: fixed;
+  float: left;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+}
+
+.main-section {
+  width: 100%;
+  margin-left: 12%;
+  background-color: azure;
+}
+
+.navigation-tb {
+  font-size: larger;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0px;
+  cursor: pointer;
+}
+
+.navigation-tb:hover {
+  background-color: white;
+}
+
+#home,
+#aboutus,
+#images,
+#services {
+  padding-left: 200px;
+  padding-bottom: 100px;
+}
+
+.title {
+  width: 70%;
+  font-weight: 900;
+  font-size: 96px;
+  margin-bottom: 40px;
+}
+
+.subtitle {
+  width: 600px;
+  font-weight: 300;
+  font-size: 30px;
+  margin-bottom: 40px;
+}
+
+.details {
+  display: flex;
+  justify-content: space-around;
+}
+
+.detail {
+  width: 500px;
+  font-weight: 300;
+  font-size: large;
+  padding: 28px;
+}
+
+#aboutus {
+  display: flex;
+  justify-content: space-around;
+  margin-right: 200px;
+}
+
+.aboutus-main {
+  width: 100%;
+}
+
+.aboutus-image {
+  margin-top: 50px;
+  width: 250px;
+  height: 250px;
+}
+
+.introduction {
+  color: #3e4242;
+  font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 200;
+  font-size: 1.1rem;
+  line-height: 1.45;
+  padding-bottom: 100px;
+}
+
+#images {
+  padding: 100px 0px;
+}
+
+.carouselDiv {
+  width: 100%;
+  height: 400px;
+  max-height: 400px;
+  overflow: hidden;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-top: 1%;
+}
+
+.carousel-control-prev-icon {
+  background-color: #ebd4d4;
+  position: absolute;
+  right: 80%;
+  background-image: url(./assets/pointer-left-svgrepo-com.svg);
+  height: 45%;
+  width: 20%;
+}
+
+.carousel-control-next-icon {
+  background-color: #ebd4d4;
+  position: absolute;
+  left: 80%;
+  background-image: url(./assets/pointer-right-svgrepo-com.svg);
+  width: 20%;
+  height: 45%;
+}
+
+.imgheight {
+  height: 400px;
+}
+
+.project {
+  display: flex;
+  margin: 1% 5%;
+  width: 70%;
+  height: 400px;
+  gap: 60px;
+  padding: 2%;
+}
+
+.project:hover {
+  background-color: rgb(217, 240, 240);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
+}
+
+.project-image > img {
+  width: 100%;
+  height: 90%;
+  border-radius: 10px;
+}
+
+.project-image > img:hover {
+  padding: 3px;
+  transition: all 0.5s;
+  opacity: 0.9;
+}
+
+.project-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.project-p {
+  font-size: 20px;
+  font-weight: 200;
+  line-height: 1.5;
+}
+
+.project-status {
+  line-height: 3;
+}
+
+#services {
+  padding-top: 100px;
+  line-height: 2;
+}
+
+.services-flex {
+  display: flex;
+  justify-content: space-around;
+  gap: 5%;
+  padding-right: 5%;
+}
+
+.services-flex > div {
+  width: 50%;
+  padding-top: 5%;
+}
