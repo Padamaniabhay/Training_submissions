@@ -8,6 +8,7 @@ const imagesBtn = document.getElementById("imagesBtn");
 const services = document.getElementById("services");
 const servicesBtn = document.getElementById("servicesBtn");
 
+//on click scroll event
 homeBtn.addEventListener("click", () => {
   home.scrollIntoView({
     behavior: "smooth",
@@ -70,7 +71,6 @@ document.addEventListener("scroll", () => {
 });
 
 //carousel
-
 const prev = document.getElementById("prev");
 const next = document.getElementById("next");
 const slider = document.querySelector(".slider");
@@ -78,7 +78,6 @@ const imgs = document.querySelectorAll(".slider img");
 
 let idx = 0;
 const width = imgs[idx].clientWidth;
-// console.log(width);
 
 next.addEventListener("click", () => {
   idx++;

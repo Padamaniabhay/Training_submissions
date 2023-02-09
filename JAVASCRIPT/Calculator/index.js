@@ -1,56 +1,66 @@
 //calculator functionality
-const clearBtn = document.getElementById("clear");
-const bkSpaceBtn = document.getElementById("bkSpace");
-const degBtn = document.getElementById("deg");
+const calcMainBtn = {
+  clearBtn: document.getElementById("clear"),
+  bkSpaceBtn: document.getElementById("bkSpace"),
+  degBtn: document.getElementById("deg"),
+  equalBtn: document.getElementById("equal"),
+};
 
 //dropdown
 const trigonometryBtn = document.getElementsByClassName("trigonometry");
 const functionBtn = document.getElementsByClassName("function");
 
 //trigonomatry functionality
-const sinBtn = document.getElementById("sin");
-const cosBtn = document.getElementById("cos");
-const tanBtn = document.getElementById("tan");
-const cscBtn = document.getElementById("csc");
-const secBtn = document.getElementById("sec");
-const cotBtn = document.getElementById("cot");
+const trigonomatryBtns = {
+  sinBtn: document.getElementById("sin"),
+  cosBtn: document.getElementById("cos"),
+  tanBtn: document.getElementById("tan"),
+  cscBtn: document.getElementById("csc"),
+  secBtn: document.getElementById("sec"),
+  cotBtn: document.getElementById("cot"),
+};
 
 //math operations
-const sqrtBtn = document.getElementById("sqrt");
-const reverseBtn = document.getElementById("reverse");
-const tenExpBtn = document.getElementById("tenExp");
-const logBtn = document.getElementById("log");
-const lnBtn = document.getElementById("ln");
-const piBtn = document.getElementById("pi");
-const eBtn = document.getElementById("e");
-const sqrBtn = document.getElementById("sqr");
-const cubeBtn = document.getElementById("cube");
-const powBtn = document.getElementById("pow");
-const absBtn = document.getElementById("abs");
-const factBtn = document.getElementById("factBtn");
-const expBtn = document.getElementById("exp");
-const modBtn = document.getElementById("mod");
-const floorBtn = document.getElementById("floor");
-const ceilBtn = document.getElementById("ceil");
-const randBtn = document.getElementById("rand");
+const mathOps = {
+  sqrtBtn: document.getElementById("sqrt"),
+  reverseBtn: document.getElementById("reverse"),
+  tenExpBtn: document.getElementById("tenExp"),
+  logBtn: document.getElementById("log"),
+  lnBtn: document.getElementById("ln"),
+  piBtn: document.getElementById("pi"),
+  eBtn: document.getElementById("e"),
+  sqrBtn: document.getElementById("sqr"),
+  cubeBtn: document.getElementById("cube"),
+  powBtn: document.getElementById("pow"),
+  absBtn: document.getElementById("abs"),
+  factBtn: document.getElementById("factBtn"),
+  expBtn: document.getElementById("exp"),
+  modBtn: document.getElementById("mod"),
+  floorBtn: document.getElementById("floor"),
+  ceilBtn: document.getElementById("ceil"),
+  randBtn: document.getElementById("rand"),
+};
 
-//numbers and operatiors
-const numbers = document.querySelectorAll(".number");
-const plusBtn = document.getElementById("plusBtn");
-const subBtn = document.getElementById("subBtn");
-const mulBtn = document.getElementById("mulBtn");
-const divBtn = document.getElementById("divBtn");
-const addBracketsBtn = document.getElementById("addBracketsBtn");
-const closeBracketsBtn = document.getElementById("closeBracketsBtn");
-const equalBtn = document.getElementById("equal");
-const signChangeBtn = document.getElementById("signChange");
+//numbers and operations
+const numOperations = {
+  numbers: document.querySelectorAll(".number"),
+  plusBtn: document.getElementById("plusBtn"),
+  subBtn: document.getElementById("subBtn"),
+  mulBtn: document.getElementById("mulBtn"),
+  divBtn: document.getElementById("divBtn"),
+  addBracketsBtn: document.getElementById("addBracketsBtn"),
+  closeBracketsBtn: document.getElementById("closeBracketsBtn"),
+  signChangeBtn: document.getElementById("signChange"),
+};
 
 //memory Btns
-const msBtn = document.getElementById("ms");
-const mrBtn = document.getElementById("mr");
-const mcBtn = document.getElementById("mc");
-const mPlusBtn = document.getElementById("mplus");
-const mMinusBtn = document.getElementById("mminus");
+const memoryBtns = {
+  msBtn: document.getElementById("ms"),
+  mrBtn: document.getElementById("mr"),
+  mcBtn: document.getElementById("mc"),
+  mPlusBtn: document.getElementById("mplus"),
+  mMinusBtn: document.getElementById("mminus"),
+};
 
 class Calculator {
   constructor() {
@@ -213,82 +223,93 @@ class Calculator {
 const c = new Calculator();
 
 //calculator functionality
-clearBtn.addEventListener("click", c.clear.bind(c));
-bkSpaceBtn.addEventListener("click", c.backSpace.bind(c));
-equalBtn.addEventListener("click", c.evaluate.bind(c));
+calcMainBtn.clearBtn.addEventListener("click", c.clear.bind(c));
+calcMainBtn.bkSpaceBtn.addEventListener("click", c.backSpace.bind(c));
+calcMainBtn.equalBtn.addEventListener("click", c.evaluate.bind(c));
 
 //trigonometry operations
-sinBtn.addEventListener("click", c.mathOps.bind(c, "sin"));
-cosBtn.addEventListener("click", c.mathOps.bind(c, "cos"));
-tanBtn.addEventListener("click", c.mathOps.bind(c, "tan"));
-cscBtn.addEventListener("click", c.mathOpsWithReverse.bind(c, "cosec", "sin"));
-secBtn.addEventListener("click", c.mathOpsWithReverse.bind(c, "sec", "cos"));
-cotBtn.addEventListener("click", c.mathOpsWithReverse.bind(c, "cot", "tan"));
+trigonomatryBtns.sinBtn.addEventListener("click", c.mathOps.bind(c, "sin"));
+trigonomatryBtns.cosBtn.addEventListener("click", c.mathOps.bind(c, "cos"));
+trigonomatryBtns.tanBtn.addEventListener("click", c.mathOps.bind(c, "tan"));
+trigonomatryBtns.cscBtn.addEventListener(
+  "click",
+  c.mathOpsWithReverse.bind(c, "cosec", "sin")
+);
+trigonomatryBtns.secBtn.addEventListener(
+  "click",
+  c.mathOpsWithReverse.bind(c, "sec", "cos")
+);
+trigonomatryBtns.cotBtn.addEventListener(
+  "click",
+  c.mathOpsWithReverse.bind(c, "cot", "tan")
+);
 
 //math operations
-sqrtBtn.addEventListener("click", c.mathOps.bind(c, "sqrt"));
-reverseBtn.addEventListener("click", () => {
+mathOps.sqrtBtn.addEventListener("click", c.mathOps.bind(c, "sqrt"));
+mathOps.reverseBtn.addEventListener("click", () => {
   c.evaluate();
   c.input.value = `1/(${c.input.value})`;
   c.output.value = c.findPower(parseFloat(c.output.value), -1);
 });
-sqrBtn.addEventListener("click", c.appendInputstr.bind(c, "^2"));
-cubeBtn.addEventListener("click", c.appendInputstr.bind(c, "^3"));
-tenExpBtn.addEventListener("click", c.appendInputstr.bind(c, "10^"));
-powBtn.addEventListener("click", c.appendInputstr.bind(c, "^"));
-piBtn.addEventListener("click", c.appendInputstr.bind(c, "Π"));
-eBtn.addEventListener("click", c.appendInputstr.bind(c, "e"));
-factBtn.addEventListener("click", c.appendInputstr.bind(c, "!"));
-modBtn.addEventListener("click", c.appendInputstr.bind(c, "%"));
-absBtn.addEventListener("click", c.mathOps.bind(c, "abs"));
-expBtn.addEventListener("click", () => {
+mathOps.sqrBtn.addEventListener("click", c.appendInputstr.bind(c, "^2"));
+mathOps.cubeBtn.addEventListener("click", c.appendInputstr.bind(c, "^3"));
+mathOps.tenExpBtn.addEventListener("click", c.appendInputstr.bind(c, "10^"));
+mathOps.powBtn.addEventListener("click", c.appendInputstr.bind(c, "^"));
+mathOps.piBtn.addEventListener("click", c.appendInputstr.bind(c, "Π"));
+mathOps.eBtn.addEventListener("click", c.appendInputstr.bind(c, "e"));
+mathOps.factBtn.addEventListener("click", c.appendInputstr.bind(c, "!"));
+mathOps.modBtn.addEventListener("click", c.appendInputstr.bind(c, "%"));
+mathOps.absBtn.addEventListener("click", c.mathOps.bind(c, "abs"));
+mathOps.expBtn.addEventListener("click", () => {
   c.appendInputstr("exp(");
   c.OpenBracketCnt++;
 });
-ceilBtn.addEventListener("click", () => {
+mathOps.ceilBtn.addEventListener("click", () => {
   c.appendInputstr("ceil(");
   c.OpenBracketCnt++;
 });
-floorBtn.addEventListener("click", () => {
+mathOps.floorBtn.addEventListener("click", () => {
   c.appendInputstr("floor(");
   c.OpenBracketCnt++;
 });
-randBtn.addEventListener("click", () => {
+mathOps.randBtn.addEventListener("click", () => {
   c.output.value = Math.random();
 });
 
-signChangeBtn.addEventListener("click", () => {
-  c.output.value = -1 * parseFloat(c.output.value);
-});
-logBtn.addEventListener("click", () => {
+mathOps.logBtn.addEventListener("click", () => {
   c.appendInputstr("log(");
   c.OpenBracketCnt++;
 });
-lnBtn.addEventListener("click", () => {
+mathOps.lnBtn.addEventListener("click", () => {
   c.appendInputstr("ln(");
   c.OpenBracketCnt++;
 });
 
 //adding listner to all numbers using forEach
-numbers.forEach((number) => {
+numOperations.numbers.forEach((number) => {
   number.addEventListener("click", c.appeandNumber.bind(c, number.innerHTML));
 });
 
 //operations
-plusBtn.addEventListener("click", c.appendOperation.bind(c, "+"));
-subBtn.addEventListener("click", c.appendOperation.bind(c, "-"));
-mulBtn.addEventListener("click", c.appendOperation.bind(c, "*"));
-divBtn.addEventListener("click", c.appendOperation.bind(c, "/"));
+numOperations.plusBtn.addEventListener("click", c.appendOperation.bind(c, "+"));
+numOperations.subBtn.addEventListener("click", c.appendOperation.bind(c, "-"));
+numOperations.mulBtn.addEventListener("click", c.appendOperation.bind(c, "*"));
+numOperations.divBtn.addEventListener("click", c.appendOperation.bind(c, "/"));
+numOperations.signChangeBtn.addEventListener("click", () => {
+  c.output.value = -1 * parseFloat(c.output.value);
+});
 
 //Brackets
 addBracketsBtn.addEventListener("click", c.addBrackets.bind(c));
 closeBracketsBtn.addEventListener("click", c.closeBrackets.bind(c));
 
 //toggleing degree and radian button
-degBtn.addEventListener("click", () => {
-  degBtn.innerHTML = degBtn.innerHTML === "RAD" ? "DEG" : "RAD";
+calcMainBtn.degBtn.addEventListener("click", () => {
+  calcMainBtn.degBtn.innerHTML =
+    calcMainBtn.degBtn.innerHTML === "RAD" ? "DEG" : "RAD";
   degBtn.style.backgroundColor = "#00FFFF";
-  if (degBtn.innerHTML === "DEG") degBtn.style.backgroundColor = "#FFFFFF";
+  if (calcMainBtn.degBtn.innerHTML === "DEG")
+    calcMainBtn.degBtn.style.backgroundColor = "#FFFFFF";
 });
 
 //dropdown event listners
@@ -303,8 +324,8 @@ functionBtn[0].addEventListener("click", () => {
 });
 
 //memory listners
-msBtn.addEventListener("click", c.memoryStore);
-mrBtn.addEventListener("click", c.memoryRestore);
-mcBtn.addEventListener("click", c.memoryClear);
-mPlusBtn.addEventListener("click", c.memoryPlus);
-mMinusBtn.addEventListener("click", c.memoryMinus);
+memoryBtns.msBtn.addEventListener("click", c.memoryStore);
+memoryBtns.mrBtn.addEventListener("click", c.memoryRestore);
+memoryBtns.mcBtn.addEventListener("click", c.memoryClear);
+memoryBtns.mPlusBtn.addEventListener("click", c.memoryPlus);
+memoryBtns.mMinusBtn.addEventListener("click", c.memoryMinus);

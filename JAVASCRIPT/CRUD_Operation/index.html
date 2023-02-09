@@ -15,21 +15,30 @@
 
   <body>
     <nav>
-      <div class="logo">Product Management System</div>
-      <button class="add-product-div">Add Product</button>
+      <a class="logo" href="./index.html">Product Management System</a>
+      <a class="add-product" href="./add_product.html">Add Product</a>
     </nav>
-
-    <div class="div-form">
-      <form action="">
-        <label>Product Name:</label>
-        <input type="text" placeholder="Enter Product Name" /><br /><br />
-        <label>Product Image:</label>
-        <input type="file" /><br /><br />
-        <label>Product Price:</label>
-        <input type="text" placeholder="Enter Product Price" /><br /><br />
-        <label>Product Description:</label>
-        <textarea rows="5"></textarea>
-      </form>
+    <div class="main-div">
+      <table>
+        <tr>
+          <th>ID<span>↑</span> <span>↓</span></th>
+          <th>Product Name<span>↑</span> <span>↓</span></th>
+          <th>Product Price<span>↑</span> <span>↓</span></th>
+          <th>Product Description<span>↑</span> <span>↓</span></th>
+          <th>Action</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>abc</td>
+          <td>123</td>
+          <td>good</td>
+          <td class="action-td">
+            <button class="view-btn">View</button>
+            <button class="edit-btn">Edit</button>
+            <button class="delete-btn">Delete</button>
+          </td>
+        </tr>
+      </table>
     </div>
   </body>
 </html>
