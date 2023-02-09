@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CRUD Operations</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./index.js" defer></script>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+
+  <body>
+    <nav>
+      <a class="logo" href="./index.html">Product Management System</a>
+      <a class="add-product" href="./add_product.html">Add Product</a>
+    </nav>
+    <div class="main-div">
+      <table id="product-tbl">
+        <tr>
+          <th>ID</th>
+          <th>
+            Product Name
+            <span id="sort-name">↑</span>
+          </th>
+          <th>Product Image</th>
+          <th>Product Price<span id="sort-price">↑</span></th>
+          <th>Product Description<span id="sort-description">↑</span></th>
+          <th>Action</th>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

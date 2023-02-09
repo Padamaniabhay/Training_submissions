@@ -1,0 +1,57 @@
+.div-form {
+  width: 100%;
+  max-width: 700px;
+  margin: auto;
+  margin-top: 50px;
+  padding: 2%;
+  background-color: aqua;
+  align-items: center;
+  text-align: center;
+  border-radius: 5%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+form > div {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 1%;
+}
+form > div > label {
+  width: 300px;
+  text-align: start;
+}
+
+form > div > input,
+form > div > textarea {
+  width: 100%;
+  padding: 5px 15px;
+  border-radius: 5px;
+}
+
+.add-product-btn {
+  width: 150px;
+  height: 40px;
+  font-size: large;
+  background-color: white;
+  align-items: flex-end;
+  text-align: center;
+  border-radius: 5px;
+  margin-top: 5%;
+}
+
+.add-product-btn:hover {
+  background-color: rgb(238, 139, 10);
+  color: white;
+}
+
+.errorDiv {
+  color: red;
+  padding-left: 200px;
+}
