@@ -2,7 +2,19 @@ const productName = document.getElementById("productName");
 const productImage = document.getElementById("productImage");
 const productPrice = document.getElementById("productPrice");
 const productDescription = document.getElementById("productDescription");
-const submitBtn = document.getElementById("submitBtn");
+const editBtn = document.getElementById("edit-product-btn");
+let product = JSON.parse(localStorage.getItem("products"));
+let productID = parseInt(JSON.parse(localStorage.getItem("id")));
+
+addEventListener("load", () => {
+  product = JSON.parse(localStorage.getItem("products"));
+  productID = parseInt(JSON.parse(localStorage.getItem("id")));
+
+  productName.value = product[productID]["name"];
+  productImage.value = product[productID]["image"];
+  productPrice.value = product[productID]["price"];
+  productDescription.value = product[productID]["description"];
+});
 
 function errorCheck() {
   //error tag
@@ -37,40 +49,16 @@ function errorCheck() {
   return isErr;
 }
 
-submitBtn.addEventListener("click", (event) => {
-  let id = "";
-  event.preventDefault();
+editBtn.addEventListener("click", () => {
   if (errorCheck()) return;
-  if (id == "") {
-    let products = JSON.parse(localStorage.getItem("products"));
-    if (products == null) {
-      localStorage.setItem(
-        "products",
-        JSON.stringify([
-          {
-            name: productName.value,
-            image: productImage.value,
-            price: productPrice.value,
-            description: productDescription.value,
-          },
-        ])
-      );
-    } else {
-      products.push({
-        name: productName.value,
-        image: productImage.value,
-        price: productPrice.value,
-        description: productDescription.value,
-      });
-      localStorage.setItem("products", JSON.stringify(products));
-    }
-  }
+  product[productID] = {
+    name: productName.value,
+    image: productImage.value,
+    price: productPrice.value,
+    description: productDescription.value,
+  };
+  localStorage.setItem("products", JSON.stringify(product));
 
-  productName.value = "";
-  productImage.value = "";
-  productPrice.value = "";
-  productDescription.value = "";
-
-  alert("data added!!!");
+  alert("data edited successfully!!!");
   window.location.replace("./index.html");
 });

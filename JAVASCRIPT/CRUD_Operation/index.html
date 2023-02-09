@@ -19,24 +19,17 @@
       <a class="add-product" href="./add_product.html">Add Product</a>
     </nav>
     <div class="main-div">
-      <table>
+      <table id="product-tbl">
         <tr>
-          <th>ID<span>↑</span> <span>↓</span></th>
-          <th>Product Name<span>↑</span> <span>↓</span></th>
-          <th>Product Price<span>↑</span> <span>↓</span></th>
-          <th>Product Description<span>↑</span> <span>↓</span></th>
+          <th>ID</th>
+          <th>
+            Product Name
+            <span id="sort-name">↑</span>
+          </th>
+          <th>Product Image</th>
+          <th>Product Price<span id="sort-price">↑</span></th>
+          <th>Product Description<span id="sort-description">↑</span></th>
           <th>Action</th>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>abc</td>
-          <td>123</td>
-          <td>good</td>
-          <td class="action-td">
-            <button class="view-btn">View</button>
-            <button class="edit-btn">Edit</button>
-            <button class="delete-btn">Delete</button>
-          </td>
         </tr>
       </table>
     </div>

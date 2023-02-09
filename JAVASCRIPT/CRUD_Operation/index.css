@@ -68,6 +68,9 @@ th {
   background-color: aqua;
   color: rgb(0, 0, 0);
 }
+td {
+  text-align: center;
+}
 
 .action-td {
   width: 320px;
