@@ -1,69 +1,88 @@
-const productName = document.getElementById("productName");
-const productImage = document.getElementById("productImage");
-const productPrice = document.getElementById("productPrice");
-const productDescription = document.getElementById("productDescription");
+// form input fields
+const inputField = {
+  productName: document.getElementById("productName"),
+  productImage: document.getElementById("productImage"),
+  productPrice: document.getElementById("productPrice"),
+  productDescription: document.getElementById("productDescription"),
+};
+
 const editBtn = document.getElementById("edit-product-btn");
 const goBackBtn = document.getElementById("goBackBtn");
-let product = JSON.parse(localStorage.getItem("products"));
-let productID = parseInt(JSON.parse(localStorage.getItem("id")));
 
+// localstorage variables
+let products = JSON.parse(localStorage.getItem("products"));
+let productID = parseInt(JSON.parse(localStorage.getItem("id")));
+let selectedProduct;
+
+//render data on input field based on id stored in localstorage
 addEventListener("load", () => {
-  product = JSON.parse(localStorage.getItem("products"));
+  products = JSON.parse(localStorage.getItem("products"));
   productID = parseInt(JSON.parse(localStorage.getItem("id")));
 
-  productName.value = product[productID]["name"];
-  productImage.value = product[productID]["image"];
-  productPrice.value = product[productID]["price"];
-  productDescription.value = product[productID]["description"];
+  selectedProduct = products.find((product) => {
+    return product.id == productID;
+  });
+
+  inputField.productName.value = selectedProduct["name"];
+  inputField.productImage.value = selectedProduct["image"];
+  inputField.productPrice.value = selectedProduct["price"];
+  inputField.productDescription.value = selectedProduct["description"];
 });
 
+//error checking
 function errorCheck() {
   //error tag
-  const productNameErr = document.getElementById("productNameErr");
-  const productImageErr = document.getElementById("productImageErr");
-  const productPriceErr = document.getElementById("productPriceErr");
-  const productDescriptionErr = document.getElementById(
-    "productDescriptionErr"
-  );
+  const errorField = {
+    productNameErr: document.getElementById("productNameErr"),
+    productImageErr: document.getElementById("productImageErr"),
+    productPriceErr: document.getElementById("productPriceErr"),
+    productDescriptionErr: document.getElementById("productDescriptionErr"),
+  };
 
   let isErr = false;
-  productNameErr.innerHTML = "";
-  if (productName.value === "") {
-    productNameErr.innerHTML = "Please Enter Product Name";
+  errorField.productNameErr.innerHTML = "";
+  if (inputField.productName.value === "") {
+    errorField.productNameErr.innerHTML = "Please Enter Product Name";
     isErr = true;
   }
-  productImageErr.innerHTML = "";
-  if (productImage.value === "") {
-    productImageErr.innerHTML = "Please Enter Product image url";
+  errorField.productImageErr.innerHTML = "";
+  if (inputField.productImage.value === "") {
+    errorField.productImageErr.innerHTML = "Please Enter Product image url";
     isErr = true;
   }
-  productPriceErr.innerHTML = "";
-  if (productPrice.value <= 0) {
-    productPriceErr.innerHTML = "Please Enter valid Product price";
+  errorField.productPriceErr.innerHTML = "";
+  if (inputField.productPrice.value <= 0) {
+    errorField.productPriceErr.innerHTML = "Please Enter valid Product price";
     isErr = true;
   }
-  productDescriptionErr.innerHTML = "";
-  if (productDescription.value === "") {
-    productDescriptionErr.innerHTML = "Please Enter Product Description";
+  errorField.productDescriptionErr.innerHTML = "";
+  if (inputField.productDescription.value === "") {
+    errorField.productDescriptionErr.innerHTML =
+      "Please Enter Product Description";
     isErr = true;
   }
   return isErr;
 }
 
+// store edited data in localstorage
 editBtn.addEventListener("click", () => {
   if (errorCheck()) return;
-  product[productID] = {
-    name: productName.value,
-    image: productImage.value,
-    price: productPrice.value,
-    description: productDescription.value,
-  };
-  localStorage.setItem("products", JSON.stringify(product));
+
+  products.forEach((product) => {
+    if (product.id == selectedProduct.id) {
+      product.name = productName.value;
+      product.image = productImage.value;
+      product.price = productPrice.value;
+      product.description = productDescription.value;
+    }
+  });
+
+  localStorage.setItem("products", JSON.stringify(products));
 
   alert("data edited successfully!!!");
-  window.location.replace("./index.html");
+  location.replace("./index.html");
 });
 goBackBtn.addEventListener("click", (event) => {
   event.preventDefault();
-  window.location.replace("./index.html");
+  location.replace("./index.html");
 });

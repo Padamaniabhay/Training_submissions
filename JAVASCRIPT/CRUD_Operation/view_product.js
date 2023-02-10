@@ -1,15 +1,24 @@
+// display product when page loads
 addEventListener("load", () => {
-  const productName = document.getElementById("productName");
-  const productImage = document.getElementById("productImage");
-  const productPrice = document.getElementById("productPrice");
-  const productDescription = document.getElementById("productDescription");
-  const product = JSON.parse(localStorage.getItem("products"));
+  // form input fields eventlistners
+  const inputField = {
+    productName: document.getElementById("productName"),
+    productImage: document.getElementById("productImage"),
+    productPrice: document.getElementById("productPrice"),
+    productDescription: document.getElementById("productDescription"),
+  };
+
+  const products = JSON.parse(localStorage.getItem("products"));
   const productID = parseInt(JSON.parse(localStorage.getItem("id")));
 
-  productName.innerHTML = product[productID]["name"];
-  productImage.src = product[productID]["image"];
-  productPrice.innerHTML = product[productID]["price"];
-  productDescription.innerHTML = product[productID]["description"];
+  let selectedProduct = products.find((product) => {
+    return product.id == productID;
+  });
+
+  inputField.productName.innerHTML = selectedProduct["name"];
+  inputField.productImage.src = selectedProduct["image"];
+  inputField.productPrice.innerHTML = selectedProduct["price"];
+  inputField.productDescription.innerHTML = selectedProduct["description"];
 });
 
 const goBackBtn = document.getElementById("go-back-btn");

@@ -1,29 +1,31 @@
+//localstorage data
 let products = JSON.parse(localStorage.getItem("products"));
 
+const filterInput = document.getElementById("filterInput");
+
+// load data on tabel based on product array
 function loadData() {
   if (products != null) {
     let loadProductsCode = `<tr>
       <th>ID</th>
-      <th>
-        Product Name
-        <span onclick="sort('name')" id="name">↑</span>
-      </th>
-      <th>Product Image</th>
-      <th>Product Price<span onclick="sort('price')" id="price">↑</span></th>
-      <th>Product Description<span onclick="sort('description')" id="description">↑</span></th>
-      <th>Action</th>
+      <th onclick="sort('name')" id="name">NAME</th>
+      <th>IMAGE</th>
+      <th onclick="sort('price')" id="price">PRICE</th>
+      <th onclick="sort('description')" id="description">DESCRIPTION</th>
+      <th>ACTION</th>
     </tr>`;
-    products.forEach((element, idx) => {
+    // console.log(products);
+    products.forEach((product) => {
       loadProductsCode += `<tr>
-        <td>${parseInt(element.id) + 1}</td>
-        <td>${element.name}</td>
-        <td><img src="${element.image}" width="100px" height="100px"/></td>
-        <td>${element.price}</td>
-        <td>${element.description}</td>
+        <td>${product.id}</td>
+        <td>${product.name}</td>
+        <td><img src="${product.image}" width="100px" height="100px"/></td>
+        <td>${product.price}</td>
+        <td>${product.description}</td>
         <td class="action-td">
-        <button class="view-btn" id="btn-view-${idx}"><img src="./assets/view.png" alt="edit" width="100%" height="100%" id="img-view-${idx}"/></button>
-          <button class="edit-btn" id="btn-edit-${idx}"><img src="./assets/edit.png" alt="edit" width="100%" height="100%" id="img-edit-${idx}"/></button>
-          <button class="delete-btn" id="btn-delete-${idx}"><img src="./assets/delete.png" alt="delete" width="100%" height="100%" id="img-delete-${idx}"/></button>
+        <button class="view-btn" id="btn-view-${product.id}"><img src="./assets/view.svg" alt="edit" width="100%" height="100%" id="img-view-${product.id}"/></button>
+          <button class="edit-btn" id="btn-edit-${product.id}"><img src="./assets/edit.svg" alt="edit" style="font-weight: 900;" width="100%" height="100%" id="img-edit-${product.id}"/></button>
+          <button class="delete-btn" id="btn-delete-${product.id}"><img src="./assets/trash.svg" alt="delete" width="100%" height="100%" id="img-delete-${product.id}"/></button>
         </td>
       </tr>`;
     });
@@ -31,12 +33,13 @@ function loadData() {
   }
 }
 
-window.addEventListener("load", () => {
+//load data when page
+addEventListener("load", () => {
   products = JSON.parse(localStorage.getItem("products"));
   loadData();
 });
 
-window.addEventListener("click", (e) => {
+addEventListener("click", (e) => {
   if (
     e.target.id.indexOf("btn-view") != -1 ||
     e.target.id.indexOf("img-view") != -1
@@ -57,47 +60,66 @@ window.addEventListener("click", (e) => {
   ) {
     localStorage.setItem("id", JSON.stringify(e.target.id.split("-")[2]));
     if (confirm("are you sure to delete?")) {
-      products.splice(e.target.id.split("-")[2], 1);
+      findedIdx = products.findIndex((product) => {
+        return product.id == e.target.id.split("-")[2];
+      });
+
+      products.splice(findedIdx, 1);
       localStorage.setItem("products", JSON.stringify(products));
       window.location.reload();
     }
   }
 });
 
+//ascending and decending sorting
 function sort(sortBy) {
-  if (sortBy != "price") {
-    products.sort((product1, product2) => {
-      if (product1[sortBy].toUpperCase() < product2[sortBy].toUpperCase()) {
-        return -1;
-      }
-      if (product1[sortBy].toUpperCase() > product2[sortBy].toUpperCase()) {
-        return 1;
-      }
-      return 0;
-    });
-  } else {
-    products.sort((product1, product2) => {
-      return parseFloat(product1[sortBy]) - parseFloat(product2[sortBy]);
-    });
-  }
+  // condition for ascending sorting
+  if (
+    document.getElementById(sortBy).innerHTML == sortBy.toUpperCase() + " ↑" ||
+    document.getElementById(sortBy).innerHTML == sortBy.toUpperCase()
+  ) {
+    if (sortBy != "price") {
+      products.sort((product1, product2) => {
+        if (product1[sortBy].toUpperCase() < product2[sortBy].toUpperCase()) {
+          return -1;
+        }
+        if (product1[sortBy].toUpperCase() > product2[sortBy].toUpperCase()) {
+          return 1;
+        }
+        return 0;
+      });
+    } else {
+      products.sort((product1, product2) => {
+        return parseFloat(product1[sortBy]) - parseFloat(product2[sortBy]);
+      });
+    }
 
-  loadData();
-  document.getElementById("name").innerHTML = "↑";
-  document.getElementById("price").innerHTML = "↑";
-  document.getElementById("description").innerHTML = "↑";
-  document.getElementById(sortBy).innerHTML = "↓";
+    loadData();
+    document.getElementById(sortBy).innerHTML = sortBy.toUpperCase() + " ↓";
+  } else {
+    // condition for descending sorting
+    products.reverse();
+
+    loadData();
+    document.getElementById(sortBy).innerHTML = sortBy.toUpperCase() + " ↑";
+  }
 }
 
-const filterInput = document.getElementById("filterInput");
+// filter input field event listner
 filterInput.addEventListener("keyup", () => {
   products = JSON.parse(localStorage.getItem("products"));
   if (document.getElementById("filterInput").value != "") {
-    findedProject = products.find((product, idx) => {
-      return idx + 1 === parseInt(document.getElementById("filterInput").value);
+    findedProject = products.find((product) => {
+      return product.id === document.getElementById("filterInput").value;
     });
-    products = [];
-    products.push(findedProject);
-    loadData();
+    // console.log(findedProject);
+    if (findedProject == undefined) {
+      loadData();
+    } else {
+      products = [];
+      products.push(findedProject);
+      loadData();
+    }
   } else {
     loadData();
   }
