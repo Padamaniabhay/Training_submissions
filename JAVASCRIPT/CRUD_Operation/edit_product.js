@@ -1,4 +1,4 @@
-// form input fields
+// form input fields eventlistners
 const inputField = {
   productName: document.getElementById("productName"),
   productImage: document.getElementById("productImage"),
