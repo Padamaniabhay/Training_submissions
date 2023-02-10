@@ -45,6 +45,7 @@
             type="number"
             placeholder="Enter Product Price"
             id="productPrice"
+            min="0"
           /><br /><br />
         </div>
         <div id="productPriceErr" class="errorDiv"></div>
@@ -53,12 +54,10 @@
           <textarea rows="2" id="productDescription"></textarea><br /><br />
         </div>
         <div id="productDescriptionErr" class="errorDiv"></div>
-        <input
-          type="button"
-          value="Add Product"
-          class="add-product-btn"
-          id="submitBtn"
-        />
+        <div class="submitBtns">
+          <input type="button" value="Go back" class="btn" id="goBackBtn" />
+          <input type="button" value="Add Product" class="btn" id="submitBtn" />
+        </div>
       </form>
     </div>
   </body>

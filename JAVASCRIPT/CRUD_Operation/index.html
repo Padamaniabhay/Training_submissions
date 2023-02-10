@@ -19,19 +19,15 @@
       <a class="add-product" href="./add_product.html">Add Product</a>
     </nav>
     <div class="main-div">
-      <table id="product-tbl">
-        <tr>
-          <th>ID</th>
-          <th>
-            Product Name
-            <span id="sort-name">↑</span>
-          </th>
-          <th>Product Image</th>
-          <th>Product Price<span id="sort-price">↑</span></th>
-          <th>Product Description<span id="sort-description">↑</span></th>
-          <th>Action</th>
-        </tr>
-      </table>
+      <div class="filterDiv">
+        <label>Filter Here with ID:</label>
+        <input
+          type="number"
+          placeholder="Search Here....."
+          id="filterInput"
+        /><br /><br />
+      </div>
+      <table id="product-tbl"></table>
     </div>
   </body>
 </html>

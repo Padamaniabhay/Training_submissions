@@ -3,6 +3,7 @@ const productImage = document.getElementById("productImage");
 const productPrice = document.getElementById("productPrice");
 const productDescription = document.getElementById("productDescription");
 const editBtn = document.getElementById("edit-product-btn");
+const goBackBtn = document.getElementById("goBackBtn");
 let product = JSON.parse(localStorage.getItem("products"));
 let productID = parseInt(JSON.parse(localStorage.getItem("id")));
 
@@ -37,8 +38,8 @@ function errorCheck() {
     isErr = true;
   }
   productPriceErr.innerHTML = "";
-  if (productPrice.value == 0) {
-    productPriceErr.innerHTML = "Please Enter Product price";
+  if (productPrice.value <= 0) {
+    productPriceErr.innerHTML = "Please Enter valid Product price";
     isErr = true;
   }
   productDescriptionErr.innerHTML = "";
@@ -60,5 +61,9 @@ editBtn.addEventListener("click", () => {
   localStorage.setItem("products", JSON.stringify(product));
 
   alert("data edited successfully!!!");
+  window.location.replace("./index.html");
+});
+goBackBtn.addEventListener("click", (event) => {
+  event.preventDefault();
   window.location.replace("./index.html");
 });

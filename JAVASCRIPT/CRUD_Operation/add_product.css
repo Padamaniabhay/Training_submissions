@@ -35,7 +35,7 @@ form > div > textarea {
   border-radius: 5px;
 }
 
-.add-product-btn {
+.btn {
   width: 150px;
   height: 40px;
   font-size: large;
@@ -46,7 +46,7 @@ form > div > textarea {
   margin-top: 5%;
 }
 
-.add-product-btn:hover {
+.btn:hover {
   background-color: rgb(238, 139, 10);
   color: white;
 }
@@ -54,4 +54,10 @@ form > div > textarea {
 .errorDiv {
   color: red;
   padding-left: 200px;
+}
+
+.submitBtns {
+  display: flex;
+  gap: 20%;
+  justify-content: space-evenly;
 }

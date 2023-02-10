@@ -6,10 +6,10 @@ addEventListener("load", () => {
   const product = JSON.parse(localStorage.getItem("products"));
   const productID = parseInt(JSON.parse(localStorage.getItem("id")));
 
-  productName.value = product[productID]["name"];
+  productName.innerHTML = product[productID]["name"];
   productImage.src = product[productID]["image"];
-  productPrice.value = product[productID]["price"];
-  productDescription.value = product[productID]["description"];
+  productPrice.innerHTML = product[productID]["price"];
+  productDescription.innerHTML = product[productID]["description"];
 });
 
 const goBackBtn = document.getElementById("go-back-btn");

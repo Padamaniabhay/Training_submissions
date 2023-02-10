@@ -4,6 +4,7 @@
 
 body {
   align-items: center;
+  margin-bottom: 200px;
 }
 
 a {
@@ -48,19 +49,25 @@ nav {
   color: white;
 }
 
+.main-div {
+  width: 100%;
+}
+
 table,
 tr,
 th,
 td {
   border: 2px solid black;
   padding: 1%;
+  font-size: 18px;
+  font-weight: 500;
+  background-color: rgb(241, 241, 241);
 }
 
 table {
   width: 100%;
   max-width: 1200px;
   margin: auto;
-  margin-top: 100px;
 }
 
 th {
@@ -74,6 +81,10 @@ td {
 
 .action-td {
   width: 320px;
+  display: flex;
+  gap: 10px;
+  border: none;
+  padding: 10px 50px;
 }
 
 .action-td > button {
@@ -86,14 +97,20 @@ td {
 }
 
 .view-btn {
+  width: 100%;
+  height: 100%;
   background-color: rgb(75, 83, 201);
   color: white;
 }
 .edit-btn {
+  width: 100%;
+  height: 100%;
   background-color: rgb(29, 167, 29);
   color: white;
 }
 .delete-btn {
+  width: 100%;
+  height: 100%;
   background-color: rgb(233, 69, 69);
   color: white;
 }
@@ -106,4 +123,23 @@ span {
   border-radius: 5px;
   cursor: pointer;
   margin: 5px;
+}
+
+.filterDiv {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin-left: 18%;
+  margin-top: 5%;
+  margin-bottom: 0%;
+}
+
+#filterInput {
+  padding: 5px;
+  text-decoration: none;
+}
+
+label {
+  font-size: 20px;
+  font-weight: 600;
 }

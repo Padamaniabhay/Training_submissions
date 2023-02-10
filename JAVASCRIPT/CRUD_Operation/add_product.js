@@ -3,6 +3,7 @@ const productImage = document.getElementById("productImage");
 const productPrice = document.getElementById("productPrice");
 const productDescription = document.getElementById("productDescription");
 const submitBtn = document.getElementById("submitBtn");
+const goBackBtn = document.getElementById("goBackBtn");
 
 function errorCheck() {
   //error tag
@@ -25,8 +26,8 @@ function errorCheck() {
     isErr = true;
   }
   productPriceErr.innerHTML = "";
-  if (productPrice.value == 0) {
-    productPriceErr.innerHTML = "Please Enter Product price";
+  if (productPrice.value <= 0) {
+    productPriceErr.innerHTML = "Please Enter valid Product price";
     isErr = true;
   }
   productDescriptionErr.innerHTML = "";
@@ -48,6 +49,7 @@ submitBtn.addEventListener("click", (event) => {
         "products",
         JSON.stringify([
           {
+            id: products.length,
             name: productName.value,
             image: productImage.value,
             price: productPrice.value,
@@ -57,6 +59,7 @@ submitBtn.addEventListener("click", (event) => {
       );
     } else {
       products.push({
+        id: products.length,
         name: productName.value,
         image: productImage.value,
         price: productPrice.value,
@@ -72,5 +75,10 @@ submitBtn.addEventListener("click", (event) => {
   productDescription.value = "";
 
   alert("data added!!!");
+  window.location.replace("./index.html");
+});
+
+goBackBtn.addEventListener("click", (event) => {
+  event.preventDefault();
   window.location.replace("./index.html");
 });

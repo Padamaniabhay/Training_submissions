@@ -28,13 +28,16 @@ form > div > label {
   text-align: start;
 }
 
-form > div > input,
-form > div > textarea {
+form > div > div,
+form > div > div {
   width: 100%;
   padding: 5px 15px;
   border-radius: 5px;
   z-index: 10;
-  background-color: white;
+  text-align: start;
+  font-size: 20px;
+  font-weight: 400;
+  /* background-color: white; */
 }
 
 #go-back-btn {

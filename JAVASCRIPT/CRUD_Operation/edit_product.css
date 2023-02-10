@@ -57,3 +57,23 @@ form > div > textarea {
   color: red;
   padding-left: 200px;
 }
+.btn {
+  width: 150px;
+  height: 40px;
+  font-size: large;
+  background-color: white;
+  align-items: flex-end;
+  text-align: center;
+  border-radius: 5px;
+  margin-top: 5%;
+}
+
+.btn:hover {
+  background-color: rgb(238, 139, 10);
+  color: white;
+}
+.submitBtns {
+  display: flex;
+  gap: 20%;
+  justify-content: space-evenly;
+}
