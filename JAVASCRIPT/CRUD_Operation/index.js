@@ -5,7 +5,7 @@ const filterInput = document.getElementById("filterInput");
 
 // load data on tabel based on product array
 function loadData() {
-  if (products != null) {
+  if (products != null && products.length != 0) {
     let loadProductsCode = `<tr>
       <th>ID</th>
       <th onclick="sort('name')" id="name">NAME</th>
@@ -30,6 +30,8 @@ function loadData() {
       </tr>`;
     });
     document.getElementById("product-tbl").innerHTML = loadProductsCode;
+  } else {
+    document.getElementById("product-tbl").innerHTML = `<h1 style="padding:10px">Product not found. Please Add</h1>`
   }
 }
 
