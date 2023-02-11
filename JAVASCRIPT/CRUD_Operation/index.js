@@ -14,7 +14,6 @@ function loadData() {
       <th onclick="sort('description')" id="description">DESCRIPTION</th>
       <th>ACTION</th>
     </tr>`;
-    // console.log(products);
     products.forEach((product) => {
       loadProductsCode += `<tr>
         <td>${product.id}</td>
