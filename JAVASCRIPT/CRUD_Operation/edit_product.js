@@ -51,10 +51,15 @@ function errorCheck() {
     isErr = true;
   }
   errorField.productPriceErr.innerHTML = "";
-  if (inputField.productPrice.value <= 0) {
-    errorField.productPriceErr.innerHTML = "Please Enter valid Product price";
+  if (inputField.productPrice.value === "") {
+    errorField.productPriceErr.innerHTML = "Please Enter Product price";
+    isErr = true;
+  } else if (inputField.productPrice.value <= 0) {
+    errorField.productPriceErr.innerHTML =
+      "Product price must be greater than 0";
     isErr = true;
   }
+
   errorField.productDescriptionErr.innerHTML = "";
   if (inputField.productDescription.value === "") {
     errorField.productDescriptionErr.innerHTML =
@@ -79,10 +84,43 @@ editBtn.addEventListener("click", () => {
 
   localStorage.setItem("products", JSON.stringify(products));
 
-  alert("data edited successfully!!!");
-  location.replace("./index.html");
+  showAlert("data edited successfully!!!");
+  setTimeout(() => {
+    location.replace("./index.html");
+  }, 2000);
 });
 goBackBtn.addEventListener("click", (event) => {
   event.preventDefault();
   location.replace("./index.html");
 });
+
+//alert box
+const alert = document.querySelector(".alert");
+const progress = document.querySelector(".progress");
+
+// Progress Bar in Alert Box
+let i = 0;
+const startProgress = () => {
+  if (i === 100) {
+    progress.style.width = "0%";
+    i = 0;
+    return;
+  }
+  setTimeout(() => {
+    progress.style.width = `${i}%`;
+    startProgress(i++);
+  }, 20);
+};
+
+const showAlert = (msg) => {
+  alert.style.display = "block";
+  alert.childNodes[1].innerText = msg;
+  startProgress();
+  setTimeout(() => {
+    alert.style.transform = "translateX(200%)";
+    setTimeout(() => {
+      alert.style.display = "none";
+      alert.style.transform = "translateX(0%)";
+    }, 1000);
+  }, 2000);
+};

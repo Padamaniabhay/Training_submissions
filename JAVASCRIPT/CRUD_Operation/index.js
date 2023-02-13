@@ -1,13 +1,16 @@
 //localstorage data
 let products = JSON.parse(localStorage.getItem("products"));
 
+const modal = document.querySelector(".delete-modal");
+const overlay = document.querySelector(".overlay");
+
 const filterInput = document.getElementById("filterInput");
 
 // load data on tabel based on product array
 function loadData() {
   if (products != null && products.length != 0) {
     let loadProductsCode = `<tr>
-      <th>ID</th>
+      <th onclick="sort('id')" id="id">ID</th>
       <th onclick="sort('name')" id="name">NAME</th>
       <th>IMAGE</th>
       <th onclick="sort('price')" id="price">PRICE</th>
@@ -22,15 +25,17 @@ function loadData() {
         <td>${product.price}</td>
         <td>${product.description}</td>
         <td class="action-td">
-        <button class="view-btn" id="btn-view-${product.id}"><img src="./assets/view.svg" alt="edit" width="100%" height="100%" id="img-view-${product.id}"/></button>
-          <button class="edit-btn" id="btn-edit-${product.id}"><img src="./assets/edit.svg" alt="edit" style="font-weight: 900;" width="100%" height="100%" id="img-edit-${product.id}"/></button>
-          <button class="delete-btn" id="btn-delete-${product.id}"><img src="./assets/trash.svg" alt="delete" width="100%" height="100%" id="img-delete-${product.id}"/></button>
+            <button class="view-btn" id="btn-view-${product.id}"><i class="material-icons" id="img-view-${product.id}">visibility</i></button>
+            <button class="edit-btn" id="btn-edit-${product.id}"><i class="material-icons" id="img-edit-${product.id}">edit</i></button>
+            <button class="delete-btn" id="btn-delete-${product.id}"><i class="material-icons" id="img-delete-${product.id}">delete</i></button>
         </td>
       </tr>`;
     });
     document.getElementById("product-tbl").innerHTML = loadProductsCode;
   } else {
-    document.getElementById("product-tbl").innerHTML = `<h1 style="padding:10px">Product not found. Please Add</h1>`
+    document.getElementById(
+      "product-tbl"
+    ).innerHTML = `<h1 style="padding:10px">No records available..</h1>`;
   }
 }
 
@@ -60,17 +65,28 @@ addEventListener("click", (e) => {
     e.target.id.indexOf("img-delete") != -1
   ) {
     localStorage.setItem("id", JSON.stringify(e.target.id.split("-")[2]));
-    if (confirm("are you sure to delete?")) {
-      findedIdx = products.findIndex((product) => {
-        return product.id == e.target.id.split("-")[2];
-      });
-
-      products.splice(findedIdx, 1);
-      localStorage.setItem("products", JSON.stringify(products));
-      window.location.reload();
-    }
+    modal.classList.remove("hidden");
+    overlay.classList.remove("hidden");
+    window.scrollTo({ behavior: "smooth", top: 0 });
   }
 });
+
+const handleCancle = () => {
+  modal.classList.add("hidden");
+  overlay.classList.add("hidden");
+};
+
+const deleteProduct = () => {
+  const id = localStorage.getItem("id");
+  products = JSON.parse(localStorage.getItem("products"));
+
+  const index = products.findIndex((product) => product.id === id);
+  products.splice(index, 1);
+  localStorage.setItem("products", JSON.stringify(products));
+  handleCancle();
+  loadData();
+  showAlert("Product deleted successfully!!");
+};
 
 //ascending and decending sorting
 function sort(sortBy) {
@@ -79,7 +95,7 @@ function sort(sortBy) {
     document.getElementById(sortBy).innerHTML == sortBy.toUpperCase() + " ↑" ||
     document.getElementById(sortBy).innerHTML == sortBy.toUpperCase()
   ) {
-    if (sortBy != "price") {
+    if (sortBy != "price" && sortBy != "id") {
       products.sort((product1, product2) => {
         if (product1[sortBy].toUpperCase() < product2[sortBy].toUpperCase()) {
           return -1;
@@ -110,18 +126,46 @@ function sort(sortBy) {
 filterInput.addEventListener("keyup", () => {
   products = JSON.parse(localStorage.getItem("products"));
   if (document.getElementById("filterInput").value != "") {
-    findedProject = products.find((product) => {
-      return product.id === document.getElementById("filterInput").value;
-    });
-    // console.log(findedProject);
-    if (findedProject == undefined) {
-      loadData();
-    } else {
-      products = [];
-      products.push(findedProject);
-      loadData();
-    }
+    findedProjects = products.filter((product) =>
+      product.id
+        .toString()
+        .startsWith(document.getElementById("filterInput").value.toString())
+    );
+    products = findedProjects;
+    loadData();
+    // }
   } else {
     loadData();
   }
 });
+
+//alert box
+const alert = document.querySelector(".alert");
+const progress = document.querySelector(".progress");
+
+// Progress Bar in Alert Box
+let i = 0;
+const startProgress = () => {
+  if (i === 100) {
+    progress.style.width = "0%";
+    i = 0;
+    return;
+  }
+  setTimeout(() => {
+    progress.style.width = `${i}%`;
+    startProgress(i++);
+  }, 20);
+};
+
+const showAlert = (msg) => {
+  alert.style.display = "block";
+  alert.childNodes[1].innerText = msg;
+  startProgress();
+  setTimeout(() => {
+    alert.style.transform = "translateX(200%)";
+    setTimeout(() => {
+      alert.style.display = "none";
+      alert.style.transform = "translateX(0%)";
+    }, 1000);
+  }, 2000);
+};
