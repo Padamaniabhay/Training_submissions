@@ -6,19 +6,19 @@ const inputField = {
   productDescription: document.getElementById("productDescription"),
 };
 
+//error tag
+const errorField = {
+  productNameErr: document.getElementById("productNameErr"),
+  productImageErr: document.getElementById("productImageErr"),
+  productPriceErr: document.getElementById("productPriceErr"),
+  productDescriptionErr: document.getElementById("productDescriptionErr"),
+};
+
 const submitBtn = document.getElementById("submitBtn");
 const goBackBtn = document.getElementById("goBackBtn");
 
 //error checking of input field
 function errorCheck() {
-  //error tag
-  const errorField = {
-    productNameErr: document.getElementById("productNameErr"),
-    productImageErr: document.getElementById("productImageErr"),
-    productPriceErr: document.getElementById("productPriceErr"),
-    productDescriptionErr: document.getElementById("productDescriptionErr"),
-  };
-
   let isErr = false;
   errorField.productNameErr.innerHTML = "";
   if (inputField.productName.value === "") {

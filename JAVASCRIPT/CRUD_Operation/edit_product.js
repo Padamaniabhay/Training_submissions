@@ -29,16 +29,16 @@ addEventListener("load", () => {
   inputField.productDescription.value = selectedProduct["description"];
 });
 
+//error tag
+const errorField = {
+  productNameErr: document.getElementById("productNameErr"),
+  productImageErr: document.getElementById("productImageErr"),
+  productPriceErr: document.getElementById("productPriceErr"),
+  productDescriptionErr: document.getElementById("productDescriptionErr"),
+};
+
 //error checking
 function errorCheck() {
-  //error tag
-  const errorField = {
-    productNameErr: document.getElementById("productNameErr"),
-    productImageErr: document.getElementById("productImageErr"),
-    productPriceErr: document.getElementById("productPriceErr"),
-    productDescriptionErr: document.getElementById("productDescriptionErr"),
-  };
-
   let isErr = false;
   errorField.productNameErr.innerHTML = "";
   if (inputField.productName.value === "") {
