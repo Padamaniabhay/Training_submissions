@@ -12,6 +12,7 @@
     <script src="./add_product.js" defer></script>
     <link rel="stylesheet" href="./index.css" />
     <link rel="stylesheet" href="./add_product.css" />
+    <link rel="stylesheet" href="./alert.css" />
   </head>
 
   <body>
@@ -27,7 +28,7 @@
             type="text"
             placeholder="Enter Product Name"
             id="productName"
-          /><br /><br />
+          />
         </div>
         <div id="productNameErr" class="errorDiv"></div>
         <div>
@@ -36,7 +37,7 @@
             type="url"
             placeholder="Enter Product Image Url"
             id="productImage"
-          /><br /><br />
+          />
         </div>
         <div id="productImageErr" class="errorDiv"></div>
         <div>
@@ -45,21 +46,25 @@
             type="number"
             placeholder="Enter Product Price"
             id="productPrice"
-          /><br /><br />
+            min="0"
+          />
         </div>
         <div id="productPriceErr" class="errorDiv"></div>
         <div>
           <label>Product Description:</label>
-          <textarea rows="2" id="productDescription"></textarea><br /><br />
+          <textarea rows="2" id="productDescription"></textarea>
         </div>
         <div id="productDescriptionErr" class="errorDiv"></div>
-        <input
-          type="button"
-          value="Add Product"
-          class="add-product-btn"
-          id="submitBtn"
-        />
+        <div class="submitBtns">
+          <input type="button" value="Go back" class="btn" id="goBackBtn" />
+          <input type="button" value="Add Product" class="btn" id="submitBtn" />
+        </div>
       </form>
+    </div>
+    <div class="overlay hidden"></div>
+    <div class="alert">
+      <p></p>
+      <div class="progress"></div>
     </div>
   </body>
 </html>
