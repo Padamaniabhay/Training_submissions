@@ -1,0 +1,52 @@
+{
+  "books": [
+    {
+      "title": "Rich Dad Poor Dad",
+      "author": ["Robert Kiyosaki", "Sharon Lechter"],
+      "country": "England",
+      "language": "English",
+      "pages": 391,
+      "year": 1997
+    },
+    {
+      "title": "Stories",
+      "author": ["Anton Chekhov"],
+      "country": "Russia",
+      "language": "Russian",
+      "pages": 194,
+      "year": 1886
+    },
+    {
+      "title": "Beyond Good and Evil",
+      "author": ["Friedrich Nietzsche"],
+      "country": "Germany",
+      "language": "German",
+      "pages": 240,
+      "year": 1886
+    },
+    {
+      "title": "Sapiens: A Brief History of Humankind",
+      "author": ["Yuval Noah Harari"],
+      "country": "israel",
+      "language": "Hebrew",
+      "pages": 512,
+      "year": 2011
+    },
+    {
+      "title": "Diplomacy",
+      "author": ["Henry Kissinger"],
+      "country": "USA",
+      "language": "English",
+      "pages": 912,
+      "year": 1994
+    },
+    {
+      "title": "Mein Kampf",
+      "author": ["Adolf Hitler"],
+      "country": "Germany",
+      "language": "German",
+      "pages": 720,
+      "year": 1925
+    }
+  ]
+}
