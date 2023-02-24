@@ -1,0 +1,1000 @@
+   24  cd newgit/
+   25  git inti
+   26  git init
+   27  [200~git commit -m "first commit"
+   28  git branch -M main
+   29  git remote add origin https://github.com/Abhay-simform/githubrepo.git
+   30  git add .
+   31  git commit -m "rfe"
+   32  git push origin master
+   33  git remote add origin https://github.com/Abhay-simform/githubrepo.git
+   34  git remote
+   35  git remote -v
+   36  git push -u origin master
+   37  git push -u origin main
+   38  ls -1 .git/refs/heads/
+   39  .git/refs/heads/
+   40  cat .git/refs/heads/master
+   41  git --version
+   42  .gitconfig
+   43  cat .gitconfig
+   44  git config --global user.name "Abhay"
+   45  git config --global user.email "padamaniabhay920@gmail.com"
+   46  git config --global color.ui true
+   47  git config --global color.state auto
+   48  git config --global color.branch auto
+   49  git config --list
+   50  git inti
+   51  git init
+   52  git config --list
+   53  git config --global user.name "Abhay Padamani"
+   54  git config --list
+   55  git checkout
+   56  index.html it status
+   57  git status
+   58  git add .
+   59  git status
+   60  git commit -m 
+   61  git commit -m "First commit"
+   62  git push
+   63  git push orign master
+   64  git checkout
+   65  ls -1 .git/refs/heads/
+   66  cat .git/refs/heads/master~
+   67  pwd
+   68  cat .git/config
+   69  git config --global user.email "padamani@simformsolutions.com"
+   70  git config --list
+   71  cat .git/config
+   72  git branch firstbranch
+   73  git checkout
+   74  git checkout firstbranch 
+   75  git branch -a
+   76  git checkout master
+   77  git status
+   78  git add .
+   79  git commit -m "added gitignore file"
+   80  git checkout firstbranch 
+   81  git checkout master
+   82  git checkout firstbranch 
+   83  git status
+   84  git add .
+   85  git commit -m "commit on firstbranch"
+   86  git checkout master 
+   87  git merge firstbranch
+   88  git checkout -a
+   89  git branch -a
+   90  git config --list
+   91  git config --global user.name "Abhay-simform"
+   92  git remote
+   93  git remote add origin https://github.com/Abhay-simform/LearnGithub.git
+   94  git push -u main
+   95  git push -u master
+   96  git push -u  origin master
+   97  git remote
+   98  git status
+   99  git checkout -a
+  100  git checkout
+  101  git branch -a
+  102  git log
+  103  git head
+  104  git diff master firstbranch
+  105  git switch -c firstbranch 
+  106  git checkout firstbranch 
+  107  git checkout master 
+  108  git show "First commit"
+  109  git show
+  110  pull request
+  111  git pull request
+  112  git show
+  113  git show "to learn"
+  114  git-show
+  115  git fetch
+  116  git config --list
+  117  git switch firstbranch 
+  118  git switch -c firstbranch 
+  119  git switch firstbranch 
+  120  git add .
+  121  git commit -m "Added in firstbranch"
+  122  git push
+  123  git push origin firstbranch 
+  124  git switch master 
+  125  git merge firstbranch 
+  126  git status
+  127  git branch
+  128  git switch firstbranch 
+  129  git branch
+  130  git add .
+  131  git commit -m "adxe"
+  132  git push origin 
+  133  git switch master 
+  134  git switch firstbranch 
+  135  git add .
+  136  git commit -m "adxefr"
+  137  git switch firstbranch 
+  138  git switch master 
+  139  git add .
+  140  git commit -m "wcd"
+  141  git switch master 
+  142  git log
+  143  code .
+  144  code .
+  145  git log firstbranch --oneline
+  146  git branch -a
+  147  git cherry-pick b3f6f24
+  148  git status
+  149  git push
+  150  git status
+  151  git add .
+  152  git status
+  153  git cherry-pick --continue
+  154  git log firstbranch --oneline
+  155  git log master  --oneline
+  156  git cherry-pick b3f6f24
+  157  git add index.html 
+  158  git cherry-pick --continue
+  159  git cherry-pick b3f6f24
+  160  git add index.html 
+  161  git cherry-pick --continue
+  162  git log master  --oneline
+  163  git rebase -i HEAD~2
+  164  git log master  --oneline
+  165  git rebase -i HEAD~2
+  166  git log master  --oneline
+  167  git rebase -i HEAD~2
+  168  git log master  --oneline
+  169  git checkout firstbranch 
+  170  git log firstbranch  --oneline
+  171  git rebase -i HEAD~3
+  172  git log firstbranch  --oneline
+  173  git checkout master 
+  174  git commit -amend --no-edit
+  175  git commit --amend --no-edit
+  176  git status
+  177  git commit --amend --no-edit
+  178  git add .
+  179  git commit --amend --no-edit
+  180  git status
+  181  git branch -a
+  182  git status
+  183  git push
+  184  git push origin firstbranch 
+  185  git pull
+  186  git pull origin firstbranch 
+  187  git push origin firstbranch 
+  188  git status
+  189  git push origin firstbranch 
+  190  git branch -a
+  191  git status
+  192  git push --help
+  193  git push origin firstbranch 
+  194  git push origin
+  195  git checkout master 
+  196  git status
+  197  git push origin firstbranch 
+  198  git checkout firstbranch 
+  199  git push origin firstbranch 
+  200  git status
+  201  git pull origin firstbranch 
+  202  git config pull.rebase false
+  203  git pull origin firstbranch 
+  204  git push origin firstbranch 
+  205  git push
+  206  git branch -a
+  207  git commit -m "used amend"
+  208  git status
+  209  git add .
+  210  git commit -m "used amend"
+  211  git push
+  212  git push --set-upstream origin firstbranch
+  213  git rebase -i HEAD~3
+  214  git status
+  215  git add index.html 
+  216  git commit
+  217  git commit -m "modified index.html"
+  218  git rebase --continue
+  219  git status
+  220  git difference index.html
+  221  git diff index.html
+  222  git checkout index.html
+  223  git reset HEAD index.html
+  224  git status
+  225  git reset HEAD index.html
+  226  git add .
+  227  git status
+  228  git reset HEAD index.html
+  229  git status
+  230  git log
+  231  git revert d23ae62fee0af96832cf4c7f2afb7a8ad7296bbf
+  232  git log
+  233  git checkout index.html
+  234  git add .
+  235  git checkout index.html
+  236  git status
+  237  git add .
+  238  git checkout index.html
+  239  git status
+  240  git reset HEAD~1 index.html
+  241  git status
+  242  git log
+  243  git revert dc34ba8bc4003cb1f35bf50cc05cac15da23d6ef
+  244  git add .
+  245  git commit -m "dsdc"
+  246  git revert dc34ba8bc4003cb1f35bf50cc05cac15da23d6ef
+  247  git revert --continue 
+  248  git add .
+  249  git revert --continue 
+  250  git show dc34ba8bc4003cb1f35bf50cc05cac15da23d6ef
+  251  git flow master
+  252  git stash ;ist
+  253  git stash list
+  254  git branch -b "learnrebase"
+  255  git checkout -b "learnrebase"
+  256  git add .
+  257  git commit -m "added commit"
+  258  git rebase master 
+  259  git checkout master 
+  260  git rebase learnrebase 
+  261  git sta
+  262  git status
+  263  git pull'
+  264  git pull
+  265  git status
+  266  git push
+  267  git stash -m "learn"
+  268  git stash list
+  269  git add .
+  270  git stash pop 0
+  271  git add .
+  272  git stash list
+  273  git stash drop 0
+  274  git stash list
+  275  git init
+  276  git commit -m "basic config"
+  277  cls
+  278  clear
+  279  git int
+  280  clear
+  281  git init
+  282  git add .
+  283  git commit -m "first commit"
+  284  git branch -M main
+  285  git remote add origin https://github.com/Abhay-simform/SIMFORM_Github_learn.git
+  286  git push -u origin main
+  287  clear
+  288  git pull
+  289  git add .
+  290  git commit -m "before pull"
+  291  git pull
+  292  git pull origin main
+  293  git config pull.rebase false
+  294  git pull origin main
+  295  git status
+  296  git add .
+  297  git commit -m "after mergeing"
+  298  git push origin main
+  299  git checkout -b feature2
+  300  git add .
+  301  git commit -m "commited in f2"
+  302  git checkout main
+  303  git checkout feature
+  304  git checkout feature2
+  305  git rebase main
+  306  git checkout main
+  307  git rebase feature2
+  308  git status
+  309  git push
+  310  git pull
+  311  git push
+  312  git pull
+  313  git add .
+  314  git push
+  315  git add .
+  316  git commit -m "f2 rebase in main"
+  317  git push
+  318  git log --oneline
+  319  git checkout feature2
+  320  git log --oneline
+  321  git add .
+  322  git commit -m "commit name to be changed"
+  323  git push
+  324  git push --set-upstream origin feature2
+  325  git log --oneline 
+  326  git commit -amend -m "after commit name changed"
+  327  git commit --amend -m "after commit name changed"
+  328  git log --oneline 
+  329  git rebase -i HEAD~6
+  330  git branch -a
+  331  git rebase -i HEAD~6
+  332  git rebase -i @~6
+  333  git rebase -i HEAD
+  334  git rebase -i HEAD-6
+  335  git rebase -i HEAD
+  336  git log --oneline 
+  337  git rebase
+  338  git rebase -i 2dd9dea
+  339  git status
+  340  git log --oneline 
+  341  git log feature2  --oneline 
+  342  git rebase -i 2dd9dea
+  343  git rebase --continue
+  344  git add .
+  345  git rebase --continue
+  346  git log feature2  --oneline 
+  347  git rebase -i 2dd9dea
+  348  git log feature2  --oneline 
+  349  git branch -a
+  350  git add .
+  351  git commit -m "commited to learn cherry-pick"
+  352  git log --onetime
+  353  git log -onetime
+  354  git log -oneline
+  355  git log --oneline
+  356  git checkout main
+  357  git status
+  358  git cherry-pick d53f3ec
+  359  git cherry-pick --continue
+  360  git add .
+  361  git cherry-pick --continue
+  362  git log -oneline
+  363  git log --oneline
+  364  git checkout feature2
+  365  git log --oneline
+  366  git revert 8d1de56
+  367  git add .
+  368  git revert --continue
+  369  git pull
+  370  git add .
+  371  git revert --continue
+  372  git add .
+  373  git commit -m "final commit"
+  374  git push
+  375  git pull
+  376  git checkout main
+  377  git pull
+  378  git push
+  379  git status
+  380  git branch -a
+  381  git fetch
+  382  code .
+  383  git status
+  384  git branch -a
+  385  git stash -m "mystashcontaint"
+  386  git stash list
+  387  git checkout feature2
+  388  git checkout main
+  389  git stash list
+  390  git stash pop 0
+  391  git add .
+  392  git stash pop 0
+  393  git add .
+  394  git commit -m "learn stash"
+  395  git push origin main
+  396  git push
+  397  git pull
+  398  git push
+  399  git add .
+  400  git commit -m "temp commit to squash"
+  401  git rebase -i HEAD~3
+  402  git rebase --abort
+  403  git rebase -i HEAD~3
+  404  git status
+  405  git rebase --abort
+  406  git status
+  407  git push
+  408  git rebase -i HEAD~3
+  409  git rebase --continue
+  410  git add .
+  411  git rebase --continue
+  412  git push
+  413  git pull
+  414  git push
+  415  git add .
+  416  git commit -m "ADD category, main carousal, multi item carousel"
+  417  git push
+  418  git add .
+  419  git commit -m "image box added, laptop, tablet responsive"
+  420  git push
+  421  git add .
+  422  git commit -m "implemented mobile view responsive in flipkart webpage"
+  423  git push
+  424  git stash carouselicon
+  425  git stash
+  426  git stash list
+  427  git branch -b htmlprac
+  428  git checkout -b htmlprac
+  429  git stash 0
+  430  git stash pop 1
+  431  git stash pop 0
+  432  git checkout main 
+  433  git status
+  434  git 
+  435  git stash
+  436  git status
+  437  git checkout htmlprac 
+  438  git stash list
+  439  git stash pop 0
+  440  git checkout main 
+  441  git status
+  442  git stash list
+  443  git checkout htmlprac 
+  444  git drop 
+  445  git branch --delete htmlprac 
+  446  git checkout main 
+  447  git branch --delete htmlprac 
+  448  git stash list
+  449  git stash carouselbtn
+  450  git stash -m "carouselbtn"
+  451  git stash list
+  452  git checkout -b  htmlprac 
+  453  git stash pop 0
+  454  git checkout main 
+  455  git branch --delete htmlprac 
+  456  git add .
+  457  git stash -m "carouselbtn"
+  458  git checkout -b  htmlprac 
+  459  git stash pop 0
+  460  git add .
+  461  git commit -m "modified carousel button and implemented threedot for small screen"
+  462  git push origin htmlprac
+  463  git checkout main 
+  464  git checkout htmlprac 
+  465  git branch
+  466  git add .
+  467  git commit -m "inline css to external css modification after PR"
+  468  git push
+  469  git push --set-upstream origin htmlprac
+  470  git push origin htmlprac 
+  471  git add .
+  472  git commit -m "html doc added"
+  473  git push origin htmlprac 
+  474  git branch -a
+  475  node -v
+  476  npm -v
+  477  npm --v
+  478  code .
+  479  git branch -a
+  480  git checkout main
+  481  git log --oneline
+  482  git checkout ecfbdb5
+  483  git checkout -b "Feature_Git"
+  484  git add .
+  485  git commit -m "created git branch"
+  486  git push
+  487  git checkout main
+  488  git log --oneline
+  489  git checkout htmlprac 
+  490  git branch -m htmlprac Feature_HTML_CSS
+  491  git branch -a
+  492  git push origin  --delete htmlprac
+  493  git branch --unset-upstream Feature_HTML_CSS 
+  494  git push origin Feature_HTML_CSS
+  495  git push origin  -u Feature_HTML_CSS
+  496  git branch -a
+  497  git checkout main
+  498  git checkout -b "develop"
+  499  git checkout -b "Feature_Javascript"
+  500  git add .
+  501  git commit -m "ADD: basic setup for Calculator"
+  502  git push
+  503  git push --set-upstream origin Feature_Javascript
+  504  git checkout develop 
+  505  git commit -m "ADD: develop branch"
+  506  git push
+  507  git checkout develop
+  508  git log
+  509  git log --graph --pretty="%ad" --date=short.
+  510  git log --graph --pretty="%ad"
+  511  git push -d origin develop 
+  512  git branch -d develop 
+  513  git checkout main
+  514  git branch -d develop 
+  515  git log --oneline 
+  516  git checkout dabaec4e25b27258a14b1b28a1abb032a72162d0
+  517  git checkout a46f59a350bda7c6545308b55a44391c9fb4c00b
+  518  git checkout dabaec4e25b27258a14b1b28a1abb032a72162d0
+  519  git checkout 4e25b27258a14b1b28a1abb032a72162d0
+  520  git status
+  521  git log --oneline
+  522  git checkout a46f59a
+  523  git branch -a
+  524  git branch -b "develop"
+  525  git checkout  -b "develop"
+  526  git push
+  527  git push --set-upstream origin develop
+  528  git branch -d Feature_Javascript 
+  529  git push -d origin Feature_Javascript 
+  530  git branch -a
+  531  git checkout  -b "Feature_Javascript"
+  532  git 
+  533  git branch -a
+  534  git push -d origin Feature_HTML_CSS  
+  535  git branch -d Feature_HTML_CSS  
+  536  git checkout develop 
+  537  git checkout -b "Feature_HTML_CSS"
+  538  git push
+  539  git push --set-upstream origin Feature_HTML_CSS
+  540  git branch -a
+  541  git checkout Feature_Javascript 
+  542  git branch -a
+  543  git checkout main
+  544  git log --oneline
+  545  git checkout a46f59a
+  546  git push
+  547  git branch -a
+  548  git checkout
+  549  git revert 
+  550  git revert a46f59a
+  551  git rebase 
+  552  git rebase a46f59a 
+  553  git checkout main
+  554  git log --oneline
+  555  git checkout 2ff8407
+  556  git log --oneline
+  557  git branch -a
+  558  git checkout main
+  559  git branch -a
+  560  git rebase a46f59a 
+  561  git log --oneline
+  562  git push
+  563  git fetch
+  564  git push
+  565  git pull
+  566  git push
+  567  git branch -a
+  568  git log --oneline
+  569  git push -d origin Feature_Javascript  
+  570  git branch -d Feature_Javascript 
+  571  git push -d origin develop 
+  572  git branch -d develop 
+  573  git branch -a
+  574  git log --oneline
+  575  git checkout "develop"
+  576  git checkout -b "develop"
+  577  git push
+  578  git push --set-upstream origin develop
+  579  git push -d origin Feature_HTML_CSS 
+  580  git branch -d Feature_HTML_CSS 
+  581  git push -d origin Feature_Git 
+  582  git branch -d Feature_Git 
+  583  git checkout -b "Feature_HTML_CSS"
+  584  git push
+  585  git checkout develop 
+  586  git checkout -b "Feature_Javascript"
+  587  git push
+  588  git push --set-upstream origin Feature_Javascript
+  589  git checkout develop 
+  590  git log --oneline 
+  591  git checkout ecfbdb5
+  592  git checkout -b "Feature_Git"
+  593  git push
+  594  git checkout develop 
+  595  git pull
+  596  git log --oneline 
+  597  git revert 
+  598  git rebase dabaec4e25b27258a14b1b28a1abb032a72162d0
+  599  git reset
+  600  git reset --hard
+  601  git log --oneline 
+  602  git checkout main
+  603  git checkout Feature_Javascript 
+  604  git add .
+  605  git commit -m "ADD: basic setup of calculator"
+  606  git push
+  607  git branch
+  608  git pull
+  609  git add .
+  610  git commit -m "ADD:added all functionality in calculator"
+  611  git push
+  612  git branch
+  613  git checkout -b "feature/javascript"
+  614  git push
+  615  git push --set-upstream origin feature/javascript
+  616  git branch -d Feature_Javascript  
+  617  git checkout develop
+  618  git checkout -b "feature/html_css"
+  619  git checkout develop
+  620  git branch -d Feature_HTML_CSS 
+  621  git checkout -b "feature/html_css"
+  622  git checkout "feature/html_css"
+  623  git checkout -b "feature/html_css"
+  624  git push
+  625  git push --set-upstream origin feature/html_css
+  626  git checkout Feature_Git 
+  627  git checkout -b "feature/git"
+  628  git push --set-upstream origin feature/git
+  629  git checkout feature/javascript 
+  630  git branch -a
+  631  git branch -d Feature_Git 
+  632  git push -d origin Feature_HTML_CSS  
+  633  git push -d origin Feature_Javascript 
+  634  git push -d origin Feature_Git 
+  635  git branch -a
+  636  git checkout develop 
+  637  git merge feature/javascript 
+  638  git branch
+  639  git stash
+  640  git checkout feature/javascript 
+  641  git branch -a
+  642  git add .
+  643  git commit -m "ADD:started work on single page app."
+  644  git push
+  645  git checkout develop 
+  646  git checkout feature/javascript 
+  647  git add .
+  648  git commit -m "ADD: carousel using vanila js"
+  649  git push
+  650  git add .
+  651  git commit -m "UPDATE: modifyed carousel and other changes "
+  652  git push
+  653  git add .
+  654  git commit -m "ADD: started to make crud operation app"
+  655  git push
+  656  git status
+  657  git branch
+  658  git add .
+  659  git commit -m "ADD:all pages created and crud operation implemented"
+  660  git push
+  661  git add .
+  662  git commit -m "ADD: filter and sorting added also some frontend modification"
+  663  git push
+  664  git add .
+  665  git commit -m "ADD: completed crud operation app"
+  666  git push
+  667  git checkout develop 
+  668  git pull
+  669  git checkout feature/javascript 
+  670  git add .
+  671  git commit -m "UPDATE: modified comment on edit.js file"
+  672  git push
+  673  git pull
+  674  git add .
+  675  git commit -m "UPDATE: modified alert and some changes"
+  676  git push
+  677  node index.js
+  678  git add .
+  679  git commit -m "UPDATE: changes after reviewing PR"
+  680  git push
+  681  ifconfig
+  682  sudo apt install net-tools
+  683  ifconfig
+  684  ftp
+  685  ftp 172.16.6.150
+  686  ftp 172.16.6.150:22
+  687  sudo apt install vsftpd
+  688  sudo systemctl status vsftpd.service
+  689  ifconfig
+  690  git add .
+  691  git commit -m "UPDATE: changed possition of delete alert modal"
+  692  git push
+  693  cd submissions/
+  694  git add .
+  695  git commit -m "UPDATE: changed possition of delete alert modal"
+  696  git push
+  697  sudo service vsftpd stop
+  698  sudo service vsftpd status
+  699  cd ..
+  700  git clone
+  701  cd ..
+  702  git clone https://github.com/Pulkit-Simform/git_practice.git
+  703  cd git_practice/
+  704  git log --online
+  705  git log --oneline
+  706  git pull
+  707  git log --oneline
+  708  git pull
+  709  git status
+  710  git log --oneline
+  711  git config pull.rebase false
+  712  git pull
+  713  git log --oneline
+  714  git add .
+  715  git commit -m "abhay added"
+  716  git push -u origin master
+  717  git log --oneline
+  718  git diff master origin/master 
+  719  git log --oneline
+  720  git reset --soft -HEAD~5
+  721  git reset --soft HEAD~5
+  722  git add .
+  723  git commit -m "dfgs"
+  724  git push
+  725  git pull
+  726  git log --oneline
+  727  git reset --soft HEAD~1
+  728  git log --oneline
+  729  git push
+  730  git pull
+  731  git reset --soft HEAD~2
+  732  gi add .
+  733  git push
+  734  git pull
+  735  git status
+  736  git log --oneline
+  737  netstat -n
+  738  netstat -n
+  739  clear
+  740  ls
+  741  cd Desktop/
+  742  clear
+  743  ls
+  744  exit
+  745  clear
+  746  exit
+  747  sudo apt install openssh-server
+  748  ifconfig
+  749  sudo service ssh stop
+  750  sudo service ssh status
+  751  sudo service ssh start
+  752  sudo service ssh stop
+  753  journalctl -u ssh
+  754  sudo grep sshd /var/log/auth.log
+  755  sudo grep sshd /var/log/auth.log 
+  756  sudo grep sshd /var/log/auth.log | grep 172.16.6.150
+  757  exit
+  758  sudo service ssh status
+  759  sudo service ssh start
+  760  cd ~/.ssh/
+  761  clear
+  762  ls
+  763  clear
+  764  ls
+  765  scp id_rsa pulkit@172.16.6.150:/home/Desktop
+  766  sudo scp id_rsa pulkit@172.16.6.150:/home/Desktop
+  767  clear
+  768  ls
+  769  sudo scp id_rsa.pub pulkit@172.16.6.150:/home/Desktop
+  770  scp id_rsa.pub pulkit@172.16.6.150:/home/Desktop
+  771  scp id_rsa.pub pulkit@172.16.6.150:/home
+  772  scp id_rsa pulkit@172.16.6.150:/home/pulkit/Desktop
+  773  clear
+  774  sudo service ssh status
+  775  sudo service ssh exit
+  776  clear
+  777  cd ..
+  778  cd
+  779  pwd
+  780  ft[; q
+  781  ftp
+  782  sudo service vsftpd status
+  783  sudo service vsftpd start
+  784  clear
+  785  ftp
+  786  pwd
+  787  ls
+  788  sudo systemctl enable vsftpd
+  789  clear
+  790  ps aux 
+  791  ps aux | grep ssh
+  792  ps aux | grep ftp
+  793  sudo service vsftpd stop
+  794  sudo systemctl disable vsftpd
+  795  clear
+  796  cd Desktop/
+  797  clear
+  798  ls
+  799  history >> history.txt
+  800  nautilus .
+  801  ftp
+  802  nautilus .
+  803  ftp
+  804  pwd
+  805  exit
+  806  clear
+  807  exit
+  808  sudo service vsftpd status
+  809  sudo service vsftpd start
+  810  ftp
+  811  cd Desktop/
+  812  ls
+  813  ftp
+  814  sudo service vsftpd status
+  815  sudo service vsftpd stop
+  816  sudo service vsftpd status
+  817  sudo service vsftpd start
+  818  cd ..
+  819  ssg
+  820  ssh
+  821  cd ssh
+  822  cd ~./ssh
+  823  cd ~ssh
+  824  cd ~/ssh
+  825  ssh pulkit@172.16.6.150
+  826  ls .ssh
+  827  ssh-keygen
+  828  cat id_rsa
+  829  cd Desktop/
+  830  cd ..
+  831  cd .ssh
+  832  cat id_ssh
+  833  ls
+  834  cat id_rsa.pub
+  835  cat id_rsa
+  836  cd ..
+  837  cd ssh
+  838  cd .s
+  839  ls
+  840  cat authorized_keys 
+  841  ssh pulkit@172.16.6.150
+  842  sudo service ssh status
+  843  ssh pulkit@172.16.6.150
+  844  sudo service ssh stop
+  845  sudo service ssh status
+  846  sudo service ssh start
+  847  sudo service ssh status
+  848  ssh pulkit@172.16.6.150
+  849  cd ..
+  850  ssh pulkit@172.16.6.150
+  851  ssh-copy-id pulkit@172.16.6.150
+  852  ssh-keygen
+  853  ssh pulkit@172.16.6.150
+  854  ls
+  855  ssh pulkit@172.16.6.150
+  856  ssh-copy-id pulkit@172.16.6.150
+  857  clear
+  858  ckear
+  859  clear
+  860  exit
+  861  ssh service status
+  862  sudo service ssh status
+  863  ssh pulkit@172.16.6.150
+  864  cd .ssh
+  865  ls
+  866  ssh 172.16.6.150
+  867  ssh pulkit@172.16.6.150
+  868  ssh restart
+  869  exit
+  870  cd ./SIMFORM_LEARN/submissions/
+  871  git status
+  872  sudo service ssh status
+  873  sudo service ssh stop
+  874  sudo service ssh start
+  875  ssh pulkit@172.16.6.150
+  876  ssh-keygen
+  877  ssh pulkit@172.16.6.150
+  878  cd .ssh
+  879  ls
+  880  cat id_rsa.pub 
+  881  ssh pulkit@172.16.6.150
+  882  cd ..
+  883  sudo ufw status
+  884  sudo ufw enable
+  885  sudo ufw status
+  886  sudo ufw status numbered
+  887  sudo ufw allow ssh
+  888  sudo ufw status
+  889  sudo ufw delete allow ssh
+  890  sudo ufw disablw
+  891  sudo ufw disable
+  892  cd ~./ssh
+  893  cd ~/.ssh
+  894  teams-for-linux
+  895  nautilus .
+  896  rm id_rsa id_rsa.pub
+  897  ls
+  898  ssh-keygen
+  899  ls
+  900  nautilus .
+  901  eixt
+  902  exit
+  903  git checkout develop
+  904  git log --oneline
+  905  git status
+  906  git pull
+  907  git checkout -b feature/basics_of_backend
+  908  git checkout feature/javascript 
+  909  git checkout feature/basics_of_backend 
+  910  git add .
+  911  git commit -m "ADD: json, xml file added. also ssh key generated"
+  912  git push -u origin feature/basics_of_backend 
+  913  git branch -a
+  914  sudo service ssh status
+  915  ssh-copy-id pulkit@172.16.6.150
+  916  ssh pulkit@172.16.6.150
+  917  sudo nano /root/.ssh/authorized_keys
+  918  [200~ssh -i ~/.ssh/mykey user@host
+  919  ~ssh -i ~/.ssh/id_rsa pulkit@172.16.6.150
+  920  ssh -i ~/.ssh/id_rsa pulkit@172.16.6.150
+  921  ssh pulkit@172.16.6.150
+  922  cd ssh
+  923  cd ./ssh
+  924  cd /ssh
+  925  cd /.ssh
+  926  cd ~/.ssh
+  927  cat id_rsa
+  928  ssh pulkit@172.16.6.150
+  929  pwdd
+  930  pwd
+  931  ssh pulkit@172.16.6.150
+  932  ssh-keygen
+  933  ls
+  934  ssh -i ./id_rsa.pub pulkit@172.16.6.150
+  935  ssh  pulkit@172.16.6.150
+  936  cat ./id_rsa
+  937  cat ./id_rsa.pub
+  938  cd ..
+  939  node -v
+  940  npm -v
+  941  cd ~
+  942  curl -sL https://deb.nodesource.com/setup_18.14.2 -o /tmp/nodesource_setup.sh
+  943  sudo apt update
+  944  sudo apt install curl
+  945  curl -sL https://deb.nodesource.com/setup_18.14.2 -o /tmp/nodesource_setup.sh
+  946  vim /tmp/nodesource_setup.sh
+  947  code /tmp/nodesource_setup.sh
+  948  sudo bash /tmp/nodesource_setup.sh
+  949  clear
+  950  sudo apt install nodejs
+  951  node -v
+  952  clear
+  953  node -v
+  954  sudo apt remove nodejs
+  955  sudo apt purge nodejs
+  956  node --version
+  957  clear
+  958  curl -sL https://deb.nodesource.com/setup_18.x -o /tmp/nodesource_setup.sh
+  959  sudo apt install nodejs
+  960  clear
+  961  node --version
+  962  clear
+  963  sudo apt remove nodejs
+  964  sudo apt purge nodejs
+  965  nvm current
+  966  node -v
+  967  node --version
+  968  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+  969  export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+  970  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  971  nvm -v
+  972  nvm i 18.14.2
+  973  node -v
+  974  node
+  975  nvm -v
+  976  nvm -version
+  977  nvm --version
+  978  nvm current
+  979  npm init
+  980  node -v
+  981  node app.js
+  982  node -v
+  983  nvm -v
+  984  npm -v
+  985  npm init
+  986  npm install --save-dev @types/node
+  987  node app.js
+  988  cd notes-app/
+  989  node app.js
+  990  npm i validator
+  991  node app.js 
+  992  npm init
+  993  npm i
+  994  npm i nodemon -g
+  995  nodemon -v
+  996  nodemon app.js 
+  997  git init
+  998  git add .
+  999  git commit -m "first commit"
+ 1000  git rebase
+ 1001  git branch -u main
+ 1002  node app.js abhay
+ 1003  cd ../..
+ 1004  ls
+ 1005  cd SIMFORM_LEARN/
+ 1006  ls
+ 1007  cd submissions/
+ 1008  ls
+ 1009  git reflog
+ 1010  nodemon
+ 1011  nodemon app.js
+ 1012  cd ../..
+ 1013  cd node-course/notes-app/
+ 1014  nodemon app.js
+ 1015  node app.js abhay hello "i am abhay"
+ 1016  npm i yargs
+ 1017  node app.js 
+ 1018  node app.js abhay hello "i am abhay"
+ 1019  node app.js abhay hello title="i am abhay"
+ 1020  node app.js abhay hello --title="i am abhay"
+ 1021  node app.js --help
+ 1022  node app.js --version
+ 1023  history >> vscmd.txt
