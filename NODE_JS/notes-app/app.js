@@ -1,10 +1,4 @@
-// const fs = require("fs");
-
-// // fs.writeFileSync("notes.txt", "hello, my name is abhay");
-// // fs.appendFileSync("notes1.txt", "hii, my name is abhay");
-
-// const getNotes = require("./notes.js");
-const validator = require("validator");
+const notes = require("./notes.js");
 const yargs = require("yargs");
 
 //to set version
@@ -13,8 +7,27 @@ yargs.version("1.1.0");
 yargs.command({
   command: "add",
   describe: "add new note",
-  handler: () => {
-    console.log("note added");
+  builder: {
+    title: {
+      describe: "title of note",
+      demandOption: true,
+      type: "string",
+    },
+    body: {
+      describe: "body of note",
+      demandOption: true,
+      type: "string",
+    },
+  },
+  handler: (argv) => {
+    notes.addNote(argv.title, argv.body);
+  },
+});
+yargs.command({
+  command: "remove",
+  describe: "remove note",
+  handler: (argv) => {
+    notes.removeNote(argv.title);
   },
   builder: {
     title: {
@@ -25,26 +38,25 @@ yargs.command({
   },
 });
 yargs.command({
-  command: "remove",
-  describe: "remove note",
-  handler: () => {
-    console.log("note removed");
-  },
-});
-yargs.command({
   command: "list",
   describe: "list all note",
   handler: () => {
-    console.log("all note listed");
+    notes.listNotes();
   },
 });
 yargs.command({
   command: "read",
   describe: "read note",
-  handler: () => {
-    console.log("read note");
+  builder: {
+    title: {
+      describe: "title of note",
+      demandOption: true,
+      type: "string",
+    },
+  },
+  handler: (argv) => {
+    notes.readNote(argv.title);
   },
 });
 
-// console.log(validator.isEmail("abc@gmail.com"), process.argv);
-console.log(process.argv, yargs.argv);
+yargs.parse();
