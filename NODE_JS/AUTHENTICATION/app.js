@@ -54,12 +54,12 @@ app.use(
 app.get("/logout", (req, res, next) => {
   try {
     req.session.destroy((err) => {
-      if (err) next({ err, status: 505 });
+      if (err) return next({ err, status: 505 });
       req.user = undefined;
       return res.status(200).redirect("/login");
     });
   } catch (err) {
-    next({ err, status: 505 });
+    return next({ err, status: 505 });
   }
 });
 
@@ -71,7 +71,7 @@ app.post("/signup", async (req, res, next) => {
   try {
     fs.readFile("./users.json", "utf-8", async (err, data) => {
       if (err) {
-        next({ status: 505, err });
+        return next({ status: 505, err });
       } else {
         const users = data.toString() == "" ? [] : JSON.parse(data);
         const salt = await becrypt.genSalt(10);
@@ -79,13 +79,13 @@ app.post("/signup", async (req, res, next) => {
         users.push({ email: req.body.email, password: hashedpassword });
         fs.writeFile("./users.json", JSON.stringify(users), (err) => {
           if (err) {
-            next({ status: 505, err });
+            return next({ status: 505, err });
           } else return res.status(200).redirect("/login");
         });
       }
     });
   } catch (err) {
-    next({ err, status: 505 });
+    return next({ err, status: 505 });
   }
 });
 
@@ -97,7 +97,7 @@ app.post("/login", async (req, res, next) => {
   try {
     fs.readFile("./users.json", "utf-8", async (err, data) => {
       if (err) {
-        next({ status: 505, err });
+        return next({ status: 505, err });
       } else {
         const users = data.toString() == "" ? [] : JSON.parse(data);
 
@@ -121,7 +121,7 @@ app.post("/login", async (req, res, next) => {
       }
     });
   } catch (err) {
-    next({ err, status: 505 });
+    return next({ err, status: 505 });
   }
 });
 
@@ -141,7 +141,7 @@ app.get("/", (req, res, next) => {
       }
     });
   } catch (err) {
-    next({ err, status: 505 });
+    return next({ err, status: 505 });
   }
 });
 app.get("/aboutus", (req, res) => {
@@ -163,7 +163,7 @@ app.use((req, res) => {
 
 app.use((err, req, res, next) => {
   console.log(err);
-  res.redirect("/login");
+  return res.redirect("/login");
 });
 
 app.listen(3000, () => {

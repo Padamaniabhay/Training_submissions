@@ -17,35 +17,33 @@
     ></script>
     <link rel="stylesheet" href="/form.css" />
 
-    <title>Sign Up</title>
+    <title>Upload file</title>
   </head>
   <body>
     <%-include("./layouts/nav.ejs")%>
     <div class="container mt-5">
-      <h1>Sign Up</h1>
-      <form class="mt-5" action="/signup" method="post">
+      <h1>Upload file Here...</h1>
+      <form
+        class="mt-5"
+        action="/upload"
+        method="post"
+        enctype="multipart/form-data"
+      >
         <div class="form-group mt-2">
-          <label for="inputEmail" class="form-label">Email address</label>
+          <label for="inputPassword" class="form-label">Title</label>
           <input
-            type="email"
-            class="form-control"
-            id="inputEmail"
-            placeholder="Enter email"
-            ,
-            name="email"
-          />
-        </div>
-        <div class="form-group mt-2">
-          <label for="inputPassword" class="form-label">Password</label>
-          <input
-            type="password"
+            type="text"
             class="form-control"
             id="inputPassword"
-            placeholder="Password"
-            name="password"
+            placeholder="Title"
+            name="title"
           />
         </div>
-        <button type="submit" class="btn btn-primary mt-3">Sign Up</button>
+        <div class="form-group mt-2">
+          <label for="inputEmail" class="form-label">File</label>
+          <input type="file" class="form-control" id="inputEmail" name="file" />
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Upload</button>
       </form>
     </div>
     <%-include("./layouts/footer.ejs")%>
