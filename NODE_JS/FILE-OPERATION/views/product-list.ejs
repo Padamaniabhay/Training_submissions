@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="/index.css" />
     <title>product management</title>
   </head>
+
   <body>
     <%-include("./layouts/nav.ejs")%> <% if(products.length < 1 ) {%>
     <h1>product not found</h1>
@@ -26,7 +27,7 @@
     <div class="container card-container mt-4 text-center">
       <% products.forEach((product)=>{ %>
       <div class="card">
-        <img src="<%=product.filePath%>" class="card-img-top" alt="..." />
+        <img src="/<%=product.filePath%>" class="card-img-top" alt="..." />
         <div class="card-body">
           <h5 class="card-title text-center"><%=product.title%></h5>
         </div>

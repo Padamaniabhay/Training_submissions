@@ -62,7 +62,7 @@ app.post("/upload", upload.single("file"), (req, res) => {
       products = data.toString() == "" ? [] : JSON.parse(data);
       products.push({
         title: req.body.title,
-        filePath: `/files/${req.file.filename}`,
+        filePath: `files/${req.file.filename}`,
       });
       fs.writeFile("./products.json", JSON.stringify(products), (err) => {
         if (err) {
