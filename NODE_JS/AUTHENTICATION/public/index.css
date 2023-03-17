@@ -1,5 +1,6 @@
 body {
   background-color: rgb(235, 235, 235);
+  min-height: 43vh;
 }
 
 .card-container {

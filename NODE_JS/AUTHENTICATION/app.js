@@ -74,6 +74,12 @@ app.post("/signup", async (req, res, next) => {
         return next({ status: 505, err });
       } else {
         const users = data.toString() == "" ? [] : JSON.parse(data);
+
+        //check whether user alredy exist
+        for (let i = 0; i < users.length; i++) {
+          if (users[i].email === req.body.email)
+            return res.status(409).redirect("/login");
+        }
         const salt = await becrypt.genSalt(10);
         const hashedpassword = await becrypt.hash(req.body.password, salt);
         users.push({ email: req.body.email, password: hashedpassword });
@@ -163,7 +169,7 @@ app.use((req, res) => {
 
 app.use((err, req, res, next) => {
   console.log(err);
-  return res.redirect("/login");
+  return res.redirect("/logout");
 });
 
 app.listen(3000, () => {
