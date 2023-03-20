@@ -111,7 +111,7 @@ const isOpen = (time) => {
       dailyShopStatus[week[i]].openHr;
 
     let noOfDay = parseInt(diff / 24);
-    let noOfHr = diff % 24;
+    let noOfHr = (diff % 24).toFixed(2);
     if (noOfDay) {
       shopStatus = `close, The shop will be open within ${noOfDay} days and ${noOfHr} Hrs`;
     } else

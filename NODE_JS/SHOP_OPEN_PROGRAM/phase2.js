@@ -105,12 +105,12 @@ const isOpen = (time) => {
       }
     }
 
-    shopStatus = `close, The shop will be open within ${
+    shopStatus = `close, The shop will be open within ${(
       24 -
       (timeHr + timeMin / 60) +
       (i - weekidx - 1) * 24 +
       dailyShopStatus[week[i]].openHr
-    } Hrs`;
+    ).toFixed(2)} Hrs`;
   }
 
   return shopStatus;

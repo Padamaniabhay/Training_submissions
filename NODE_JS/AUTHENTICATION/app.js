@@ -170,7 +170,7 @@ app.use((req, res) => {
 
 app.use((err, req, res, next) => {
   console.log(err);
-  return res.redirect("/logout");
+  return res.redirect("/product");
 });
 
 app.listen(process.env.PORT, () => {
