@@ -1,12 +1,15 @@
 const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 module.exports = isAuth = (req, res, next) => {
   //jwt stored in cookie
-  //   if (!(req.cookies.token && jwt.verify(req.cookies.token, "secret")))
+  //   if (!(req.cookies.token && jwt.verify(req.cookies.token, process.env.JWT_TOKEN)))
   //     return res.status(401).redirect("/login");
 
   //jwt stored in session
-  if (!(req.session.token && jwt.verify(req.session.token, "secret")))
+  if (
+    !(req.session.token && jwt.verify(req.session.token, process.env.JWT_TOKEN))
+  )
     return res.status(401).redirect("/login");
 
   //decoding jwt token which is stored in cookies

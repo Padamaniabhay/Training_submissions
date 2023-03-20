@@ -6,12 +6,12 @@ const timeZone = JSON.parse(
   fs.readFileSync("timezone.json", { encoding: "utf-8" })
 ).data;
 
-//cli quations
-const quations = [
+//cli questions
+const questions = [
   {
     type: "input",
     name: "CURRENT_TIME",
-    message: "CURRENT_TIME",
+    message: "time ex: 12:30 PM",
     default() {
       const date = new Date();
       return date
@@ -21,6 +21,11 @@ const quations = [
           hour12: true,
         })
         .toString();
+    },
+    validate(time) {
+      const regex = /^(1[012]|[1-9]|0[1-9]):[0-5][0-9](\s)(AM|PM)$/i;
+      if (regex.test(time)) return true;
+      return "please enter in correct format";
     },
   },
   {
@@ -65,8 +70,8 @@ const getOffSet = (convert_to_timezone) => {
     console.log("No Element found");
   }
 };
-
-inquirer.prompt(quations).then((answers) => {
+(async function () {
+  let answers = await inquirer.prompt(questions);
   const CONVERT_TO_TIMEZONE_OFFSET = getOffSet(answers.CONVERT_TO_TIMEZONE);
   const convertedTime = getTime(
     answers.CURRENT_TIMEZONE,
@@ -76,4 +81,4 @@ inquirer.prompt(quations).then((answers) => {
   );
 
   console.log("CONVERTED_TIMEZONE: ", convertedTime);
-});
+})();

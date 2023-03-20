@@ -1,5 +1,6 @@
 const path = require("path");
 const fs = require("fs");
+require("dotenv").config();
 
 const express = require("express");
 const jwt = require("jsonwebtoken");
@@ -14,7 +15,7 @@ const isAuth = require("./isAuth");
 
 //session storage
 const store = new MongoDBStore({
-  uri: "mongodb+srv://abhay:abhay@cluster0.mdrirpj.mongodb.net/?retryWrites=true&w=majority",
+  uri: process.env.MONGO_URL,
   collection: "session",
 });
 
@@ -45,7 +46,7 @@ app.use(express.static(path.join(__dirname, "public")));
 //session middleware
 app.use(
   session({
-    secret: "mysecret",
+    secret: process.env.SESSION_TOKEN,
     cookie: { expires: 60 * 60 * 1000 }, //one hour
     store: store, //mongodb as a storage
   })
@@ -116,7 +117,7 @@ app.post("/login", async (req, res, next) => {
         );
         if (!validPassword) return res.status(401).redirect("/login");
 
-        const token = jwt.sign(users[userIdx], "secret");
+        const token = jwt.sign(users[userIdx], process.env.JWT_TOKEN);
 
         //to store jwt in session
         req.session.token = token;
@@ -172,7 +173,7 @@ app.use((err, req, res, next) => {
   return res.redirect("/logout");
 });
 
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
   console.log("server up and runing");
 });
 
