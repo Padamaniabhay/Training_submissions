@@ -1,3 +1,25 @@
+const fs = require("fs");
+const timeZone = JSON.parse(
+  fs.readFileSync("timezone.json", { encoding: "utf-8" })
+).data;
+
+const getOffSet = (convert_to_timezone) => {
+  let tx2;
+  let flag = false;
+
+  timeZone.forEach((tz) => {
+    if (tz.abbr === convert_to_timezone) {
+      flag = true;
+      tx2 = tz.offset;
+    }
+  });
+
+  if (flag) return tx2.toString();
+  else {
+    console.log("No Element found");
+  }
+};
+
 const toMiliseconds = (cur_time) => {
   const arr = cur_time.split(" ");
   let hr = parseInt(arr[0].split(":")[0]);
@@ -5,20 +27,19 @@ const toMiliseconds = (cur_time) => {
 
   arr[1] === "PM" ? (hr += 12) : hr;
 
-  const d = new Date();
-  d.setHours(hr);
-  d.setMinutes(min);
+  const date = new Date();
+  date.setHours(hr);
+  date.setMinutes(min);
 
-  return d.getTime();
+  return date.getTime();
 };
 
-const getTime = (cur_timezone, cur_time, timezone, convert_offset) => {
-  let cur_offset = undefined;
+const getTime = (cur_timezone, cur_time, convert_timezone) => {
+  //find offset of both timezone from timezone.json file
+  const convert_offset = getOffSet(convert_timezone);
+  const cur_offset = getOffSet(cur_timezone);
 
-  //find offset from timezone.json file
-  timezone.forEach((tz) => {
-    if (tz.abbr === cur_timezone) cur_offset = tz.offset;
-  });
+  if (!convert_offset || !cur_offset) return "enter valid time zone";
 
   //utc = current milliseconds - offset of current timezone
   const utc = toMiliseconds(cur_time) + -(cur_offset * 60) * 60000;
