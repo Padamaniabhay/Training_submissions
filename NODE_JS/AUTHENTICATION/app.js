@@ -77,17 +77,18 @@ app.post("/signup", async (req, res, next) => {
         const users = data.toString() == "" ? [] : JSON.parse(data);
 
         //check whether user alredy exist
-        for (let i = 0; i < users.length; i++) {
-          if (users[i].email === req.body.email)
-            return res.status(409).redirect("/login");
-        }
+        if (users.some((user) => user.email === req.body.email))
+          return res.status(409).redirect("/login");
+
+        //encrypt password and push in users array
         const salt = await becrypt.genSalt(10);
         const hashedpassword = await becrypt.hash(req.body.password, salt);
         users.push({ email: req.body.email, password: hashedpassword });
+
+        //update users.json file
         fs.writeFile("./users.json", JSON.stringify(users), (err) => {
-          if (err) {
-            return next({ status: 505, err });
-          } else return res.status(200).redirect("/login");
+          if (err) return next({ status: 505, err });
+          else return res.status(200).redirect("/login");
         });
       }
     });
