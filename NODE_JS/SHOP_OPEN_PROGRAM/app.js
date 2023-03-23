@@ -39,12 +39,12 @@ const questions = [
 (async function () {
   try {
     let answers = await inquirer.prompt(questions);
-    answers.CURRENT_TIME =
-      answers.Day + " " + answers.CURRENT_TIME.toUpperCase();
-    if (answers.phase === "phase1") console.log(phase1(answers.CURRENT_TIME));
+    answers.CURRENT_TIME = answers.CURRENT_TIME.toUpperCase();
+    if (answers.phase === "phase1")
+      console.log(phase1(answers.Day, answers.CURRENT_TIME));
     else if (answers.phase === "phase2")
-      console.log(phase2(answers.CURRENT_TIME));
-    else console.log(phase3(answers.CURRENT_TIME));
+      console.log(phase2(answers.Day, answers.CURRENT_TIME));
+    else console.log(phase3(answers.Day, answers.CURRENT_TIME));
   } catch (err) {
     console.log(err);
   }
