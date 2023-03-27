@@ -21,16 +21,7 @@ const getOffSet = (convert_to_timezone) => {
 };
 
 const toMiliseconds = (cur_time) => {
-  const arr = cur_time.split(" ");
-  let hr = parseInt(arr[0].split(":")[0]);
-  const min = parseInt(arr[0].split(":")[1]);
-
-  arr[1] === "PM" ? (hr += 12) : hr;
-
-  const date = new Date();
-  date.setHours(hr);
-  date.setMinutes(min);
-
+  const date = new Date(`01/01/2000 ${cur_time}`);
   return date.getTime();
 };
 
