@@ -6,6 +6,7 @@ const {
   postNewProduct,
   putUpadateProduct,
   deleteProductById,
+  postSearchProduct,
 } = require("../../Controllers/product");
 
 const router = express.Router();
@@ -24,5 +25,8 @@ router.put("/:id", putUpadateProduct);
 
 //delete product
 router.delete("/:id", deleteProductById);
+
+//search by product name
+router.post("/:pname", postSearchProduct);
 
 module.exports = router;

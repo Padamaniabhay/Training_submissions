@@ -1,5 +1,5 @@
 const { DataTypes } = require("sequelize");
-const sequelize = require("../sequelize");
+const sequelize = require("../Utils/sequelize");
 
 const product = sequelize.define(
   "product",
@@ -12,10 +12,19 @@ const product = sequelize.define(
     pname: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        len: [5, 45],
+      },
+      get() {
+        return this.getDataValue("pname").toUpperCase();
+      },
     },
     price: {
       type: DataTypes.DOUBLE,
       allowNull: false,
+      validate: {
+        min: 0,
+      },
     },
     description: DataTypes.STRING,
     imageUrl: DataTypes.STRING,
