@@ -11,12 +11,11 @@ const helmet = require("helmet");
 const isAuth = require("./isAuth");
 
 //session storage
-const store = require("./Utils/sessionStorage")
+const store = require("./Utils/sessionStorage");
 
 //routes
-const userRoutes = require("./Routes/users")
-const productRoutes = require("./Routes/products")
-
+const userRoutes = require("./Routes/users");
+const productRoutes = require("./Routes/products");
 
 const app = express();
 
@@ -39,15 +38,17 @@ app.set("views", "views");
 app.use(express.static(path.join(__dirname, "public")));
 
 //session middleware
-app.use(session({
-  secret: process.env.SESSION_TOKEN,
-  cookie: { expires: 60 * 60 * 1000 }, //one hour
-  store: store, //mongodb as a storage
-}));
+app.use(
+  session({
+    secret: process.env.SESSION_TOKEN,
+    cookie: { expires: 60 * 60 * 1000 }, //one hour
+    store: store, //mongodb as a storage
+  })
+);
 
-app.use(userRoutes)
+app.use(userRoutes);
 app.use(isAuth);
-app.use(productRoutes)
+app.use(productRoutes);
 
 app.use((req, res) => {
   return res.status(404).render("404");

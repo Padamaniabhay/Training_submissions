@@ -1,8 +1,13 @@
 const express = require("express");
-const { getLogout, getSignUp, postSignUp, getLogin, postLogin } = require("./../../Controller/user")
+const {
+  getLogout,
+  getSignUp,
+  postSignUp,
+  getLogin,
+  postLogin,
+} = require("./../../Controller/user");
 
 const router = express.Router();
-
 
 router.get("/logout", getLogout);
 router.get("/signup", getSignUp);
