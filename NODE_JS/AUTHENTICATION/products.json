@@ -1,0 +1,50 @@
+[
+  {
+    "title": "iPhone 13 Pro",
+    "description": "The most advanced iPhone yet with the best camera system, longest battery life, and fastest processor.",
+    "imgUrl": "https://images.hindustantimes.com/tech/img/2021/09/24/original/iPhone_13_Pro_Max_(4)_1632469213724.jpg",
+    "price": 999.0
+  },
+  {
+    "title": "MacBook Pro",
+    "description": "The ultimate laptop for power users, with an M1 Pro or M1 Max chip, stunning retina display, and up to 10 hours of battery life.",
+    "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRe538WHcczfKyW_ft4NUszjFlfKkvWWyjbETjCGmL_&s",
+    "price": 1999.0
+  },
+  {
+    "title": "AirPods Pro",
+    "description": "Immerse yourself in your music with noise-cancelling technology and high-quality audio.",
+    "imgUrl": "https://images.unsplash.com/photo-1588156979435-379b9d365296?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8YWlycG9kcyUyMHByb3xlbnwwfHwwfHw%3D&w=1000&q=80",
+    "price": 249.0
+  },
+  {
+    "title": "Apple Watch Series 7",
+    "description": "Stay connected and track your health and fitness with the most advanced Apple Watch yet.",
+    "imgUrl": "https://www.apple.com/newsroom/images/product/watch/standard/Apple_watch-series7_hero_09142021_big.jpg.large.jpg",
+    "price": 399.0
+  },
+  {
+    "title": "iPad Pro",
+    "description": "The ultimate tablet for power users, with an M1 chip, stunning Liquid Retina display, and up to 10 hours of battery life.",
+    "imgUrl": "https://cdn0.vox-cdn.com/hermano/verge/product/image/9586/iPad-SQ.jpg",
+    "price": 799.0
+  },
+  {
+    "title": "Samsung Galaxy S21 Ultra 5G",
+    "description": "6.8-inch Quad HD+ Dynamic AMOLED 2X Infinity-O display. 108MP Wide, 12MP Ultra Wide, and 10MP 10x Telephoto lenses with 100x Space Zoom.",
+    "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCItZ6EBavh6lk5bH29mWbmqdL16YRGYkybNyDaopCng&s",
+    "price": 1199
+  },
+  {
+    "title": "Sony WH-1000XM4 Wireless Noise Cancelling Headphones",
+    "description": "Industry-leading noise cancellation technology. Up to 30 hours of battery life. Quick charging for 5 hours of playback in just 10 minutes.k-to Available in Black and Silver.",
+    "imgUrl": "https://www.sony.co.in/image/5d02da5df552836db894cead8a68f5f3?fmt=pjpeg&wid=330&bgcolor=FFFFFF&bgc=FFFFFF",
+    "price": 349
+  },
+  {
+    "title": "Nintendo Switch with Neon Blue and Neon Red Joy-Con",
+    "description": "Multi-touch capacitive touch screen. 32 GB of internal storage, expandable via microSDHC or microSDXC card. Up to 9 hours of battery life.",
+    "imgUrl": "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/41aaQR4AxkL.jpg",
+    "price": 299
+  }
+]

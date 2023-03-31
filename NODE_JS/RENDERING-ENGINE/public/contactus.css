@@ -1,0 +1,13 @@
+input,
+textarea {
+  width: 200px;
+}
+
+form {
+  margin: 20px 400px;
+}
+
+.form-label {
+  font-size: 20px;
+  font-weight: 500;
+}
