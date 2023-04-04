@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../Utils/sequelize");
 
-const product = sequelize.define(
+const Product = sequelize.define(
   "product",
   {
     id: {
@@ -13,10 +13,7 @@ const product = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [5, 45],
-      },
-      get() {
-        return this.getDataValue("pname").toUpperCase();
+        len: [1, 45],
       },
     },
     price: {
@@ -26,11 +23,8 @@ const product = sequelize.define(
         min: 0,
       },
     },
-    description: DataTypes.STRING,
-    imageUrl: DataTypes.STRING,
   },
   {
-    timestamps: false,
     indexes: [
       {
         unique: false,
@@ -40,4 +34,4 @@ const product = sequelize.define(
   }
 );
 
-module.exports = product;
+module.exports = Product;
