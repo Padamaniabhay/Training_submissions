@@ -25,12 +25,7 @@ const Product = sequelize.define(
     },
   },
   {
-    indexes: [
-      {
-        unique: false,
-        fields: ["price"],
-      },
-    ],
+    timestamps: false,
   }
 );
 

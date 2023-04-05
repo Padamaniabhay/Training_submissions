@@ -5,12 +5,20 @@ const {
   postNewUser,
   putUpadateUser,
   deleteUserById,
+  getMostActiveUser,
+  getInActiveUser,
 } = require("../../Controllers/user");
 
 const router = express.Router();
 
 //get all Users
 router.get("/", getAllUser);
+
+//get top 5 most active users
+router.get("/active", getMostActiveUser);
+
+//get top 5 most inactive users
+router.get("/inactive", getInActiveUser);
 
 //get particular User
 router.get("/:id", getUserById);

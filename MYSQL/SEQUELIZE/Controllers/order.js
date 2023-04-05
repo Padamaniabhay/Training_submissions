@@ -1,4 +1,6 @@
+const { Sequelize } = require("sequelize");
 const Models = require("../Utils/Models");
+const sequelize = require("../Utils/sequelize");
 
 const getAllOrder = async (req, res, next) => {
   try {
@@ -31,8 +33,23 @@ const getAllOrderByUserId = async (req, res, next) => {
 
 const postNewOrder = async (req, res, next) => {
   try {
-    const newOrder = await Models.Order.create(req.body.order);
-    newOrder.setUser(req.body.userID);
+    let newOrder = {};
+    await sequelize.transaction(async (t) => {
+      newOrder = await Models.Order.create(req.body.order, {
+        transaction: t,
+      });
+      await newOrder.setUser(req.body.userID, { transaction: t });
+      await Models.OrderDetails.bulkCreate(
+        req.body.product.map((product) => {
+          return {
+            productId: product.productId,
+            orderId: newOrder.getDataValue("id"),
+            quantity: product.quantity,
+          };
+        }),
+        { transaction: t }
+      );
+    });
     return res.json({
       message: "Order created successfully!!",
       ...newOrder,
@@ -67,14 +84,73 @@ const deleteOrderById = async (req, res, next) => {
   }
 };
 
-const postAddProductInOrder = async (req, res, next) => {
+const getUndeliveredOrders = async (req, res, next) => {
   try {
-    const OrderItem = await Models.Order.findOne({
-      where: { id: req.params.id },
+    const undeliveredOrders = await Models.Order.findAll({
+      where: { orderStatus: "undelivered" },
     });
-    if (!OrderItem) return res.json({ message: "Order not found" });
-    await OrderItem.addProducts(req.body.productID);
-    return res.json({ message: "products in order added successfully" });
+    if (!undeliveredOrders)
+      return res.json({ message: "Orders not found which is undelivered" });
+    return res.json(undeliveredOrders);
+  } catch (error) {
+    return next(error);
+  }
+};
+
+const getMostRecentOrder = async (req, res, next) => {
+  try {
+    const mostRecentOrders = await Models.Order.findAll({
+      limit: 5,
+      order: [["orderDate", "DESC"]],
+    });
+    if (!mostRecentOrders) return res.json({ message: "Orders not found" });
+    return res.json(mostRecentOrders);
+  } catch (error) {
+    return next(error);
+  }
+};
+
+const getMostExpensiveOrder = async (req, res, next) => {
+  try {
+    const orders = await Models.OrderDetails.findAll({
+      include: {
+        model: Models.Product,
+        attributes: [],
+      },
+
+      attributes: [
+        "orderId",
+        [Sequelize.literal("sum(product.price * quantity)"), "totalPrice"],
+      ],
+      group: ["orderId"],
+      order: [["totalPrice", "DESC"]],
+      limit: 1,
+    });
+
+    return res.json({ orders });
+  } catch (error) {
+    return next(error);
+  }
+};
+
+const getMostCheapestOrder = async (req, res, next) => {
+  try {
+    const orders = await Models.OrderDetails.findAll({
+      include: {
+        model: Models.Product,
+        attributes: [],
+      },
+
+      attributes: [
+        "orderId",
+        [Sequelize.literal("sum(product.price * quantity)"), "totalPrice"],
+      ],
+      group: ["orderId"],
+      order: [["totalPrice", "ASC"]],
+      limit: 1,
+    });
+
+    return res.json({ orders });
   } catch (error) {
     return next(error);
   }
@@ -87,5 +163,8 @@ module.exports = {
   putUpadateOrder,
   deleteOrderById,
   getAllOrderByUserId,
-  postAddProductInOrder,
+  getUndeliveredOrders,
+  getMostRecentOrder,
+  getMostExpensiveOrder,
+  getMostCheapestOrder,
 };

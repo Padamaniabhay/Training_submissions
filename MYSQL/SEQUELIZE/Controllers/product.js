@@ -1,13 +1,8 @@
-const { Op } = require("sequelize");
+const { Op, Sequelize } = require("sequelize");
 const Models = require("../Utils/Models");
 
 const getAllProduct = async (req, res, next) => {
   try {
-    //pagination
-    // const page = req.query.page || 1;
-    // return res.json(
-    //   await Models.Product.findAll({ offset: (page - 1) * 2, limit: 2 })
-    // );
     return res.json(await Models.Product.findAll());
   } catch (error) {
     next(error);
@@ -26,8 +21,10 @@ const getProductById = async (req, res, next) => {
 
 const postNewProduct = async (req, res, next) => {
   try {
+    const user = await Models.User.findByPk(req.body.userID);
+    if (!user) return res.json({ message: "user not found" });
     const newProduct = await Models.Product.create(req.body.product);
-    newProduct.setUser(req.body.userID);
+    await newProduct.setUser(req.body.userID);
     return res.json({
       message: "product created successfully!!",
       ...newProduct,
@@ -42,7 +39,7 @@ const putUpadateProduct = async (req, res, next) => {
     const productItem = await Models.Product.update(req.body.product, {
       where: { id: req.params.id },
     });
-    if (!productItem) return res.json({ message: "product not found" });
+    if (!productItem[0]) return res.json({ message: "product not found" });
     return res.json({ message: "prdouct updated successfully" });
   } catch (error) {
     next(error);
@@ -94,6 +91,29 @@ const getProductByUserId = async (req, res, next) => {
   }
 };
 
+const getMostPurchasedProduct = async (req, res, next) => {
+  try {
+    const mostPurchasedProduct = await Models.OrderDetails.findAll({
+      attributes: [
+        "productId",
+        [Sequelize.fn("sum", Sequelize.col("quantity")), "productCount"],
+      ],
+      include: {
+        model: Models.Product,
+        attributes: ["pname", "price"],
+      },
+      order: [["productCount", "DESC"]],
+      group: "productId",
+      limit: 5,
+    });
+    if (!mostPurchasedProduct)
+      return res.json({ message: "product not found" });
+    return res.json({ mostPurchasedProduct });
+  } catch (error) {
+    return next(error);
+  }
+};
+
 module.exports = {
   getAllProduct,
   getProductById,
@@ -102,4 +122,5 @@ module.exports = {
   deleteProductById,
   postSearchProduct,
   getProductByUserId,
+  getMostPurchasedProduct,
 };

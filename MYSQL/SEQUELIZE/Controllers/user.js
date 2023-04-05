@@ -1,18 +1,32 @@
+const { Sequelize } = require("sequelize");
 const Models = require("./../Utils/Models");
 
 const getAllUser = async (req, res, next) => {
   try {
     return res.json(
       await Models.User.findAll({
-        include: {
-          all: true,
-          nested: true,
-          attributes: {
-            exclude: ["createdAt", "updatedAt"],
+        include: [
+          {
+            model: Models.Product,
+            attributes: {
+              exclude: ["id", "userId"],
+            },
           },
-        },
+          {
+            model: Models.Order,
+            attributes: {
+              exclude: ["id", "userId"],
+            },
+            include: {
+              model: Models.Product,
+              attributes: {
+                exclude: ["id", "userId"],
+              },
+            },
+          },
+        ],
         attributes: {
-          exclude: ["createdAt", "updatedAt"],
+          exclude: ["id"],
         },
       })
     );
@@ -67,10 +81,50 @@ const deleteUserById = async (req, res, next) => {
   }
 };
 
+const getMostActiveUser = async (req, res, next) => {
+  try {
+    const mostActiveUser = await Models.Order.findAll({
+      attributes: [
+        "userId",
+        [Sequelize.fn("count", Sequelize.col("userId")), "totalOrders"],
+      ],
+      group: ["userId"],
+      order: [["totalOrders", "DESC"]],
+      limit: 5,
+    });
+    if (!mostActiveUser) return res.json({ message: "user not found" });
+    return res.json({ mostActiveUser });
+  } catch (error) {
+    return next(error);
+  }
+};
+
+const getInActiveUser = async (req, res, next) => {
+  try {
+    const inActiveUsers = await Models.User.findAll({
+      include: [
+        {
+          model: Models.Order,
+          required: false,
+        },
+      ],
+      where: {
+        "$orders.id$": null,
+      },
+    });
+    if (!inActiveUsers) return res.json({ message: "user not found" });
+    return res.json({ inActiveUsers });
+  } catch (error) {
+    return next(error);
+  }
+};
+
 module.exports = {
   getAllUser,
   getUserById,
   postNewUser,
   putUpadateUser,
   deleteUserById,
+  getMostActiveUser,
+  getInActiveUser,
 };
