@@ -3,7 +3,7 @@ const Models = require("./../Utils/Models");
 
 const getAllUser = async (req, res, next) => {
   try {
-    return res.json(
+    return res.status(200).json(
       await Models.User.findAll({
         include: [
           {
@@ -38,8 +38,9 @@ const getAllUser = async (req, res, next) => {
 const getUserById = async (req, res, next) => {
   try {
     const userDetails = await Models.User.findByPk(req.params.id);
-    if (!userDetails) return res.json({ message: "user not found" });
-    return res.json({ userDetails });
+    if (!userDetails)
+      return res.status(404).json({ message: "user not found" });
+    return res.status(200).json({ userDetails });
   } catch (error) {
     return next(error);
   }
@@ -48,7 +49,7 @@ const getUserById = async (req, res, next) => {
 const postNewUser = async (req, res, next) => {
   try {
     const newUser = await Models.User.create(req.body.user);
-    return res.json({
+    return res.status(200).json({
       message: "User created successfully!!",
       ...newUser,
     });
@@ -62,8 +63,9 @@ const putUpadateUser = async (req, res, next) => {
     const userDetails = await Models.User.update(req.body.user, {
       where: { id: req.params.id },
     });
-    if (!userDetails) return res.json({ message: "user not found" });
-    return res.json({ message: "user updated successfully" });
+    if (!userDetails)
+      return res.status(404).json({ message: "user not found" });
+    return res.status(200).json({ message: "user updated successfully" });
   } catch (error) {
     return next(error);
   }
@@ -74,8 +76,9 @@ const deleteUserById = async (req, res, next) => {
     const userDetails = await Models.User.destroy({
       where: { id: req.params.id },
     });
-    if (!userDetails) return res.json({ message: "user not found" });
-    return res.json({ message: "user deleted successfully" });
+    if (!userDetails)
+      return res.status(404).json({ message: "user not found" });
+    return res.status(200).json({ message: "user deleted successfully" });
   } catch (error) {
     return next(error);
   }
@@ -92,8 +95,9 @@ const getMostActiveUser = async (req, res, next) => {
       order: [["totalOrders", "DESC"]],
       limit: 5,
     });
-    if (!mostActiveUser) return res.json({ message: "user not found" });
-    return res.json({ mostActiveUser });
+    if (!mostActiveUser)
+      return res.status(404).json({ message: "user not found" });
+    return res.status(200).json({ mostActiveUser });
   } catch (error) {
     return next(error);
   }
@@ -106,14 +110,16 @@ const getInActiveUser = async (req, res, next) => {
         {
           model: Models.Order,
           required: false,
+          attributes: [],
         },
       ],
       where: {
         "$orders.id$": null,
       },
     });
-    if (!inActiveUsers) return res.json({ message: "user not found" });
-    return res.json({ inActiveUsers });
+    if (!inActiveUsers)
+      return res.status(404).json({ message: "user not found" });
+    return res.status(200).json({ inActiveUsers });
   } catch (error) {
     return next(error);
   }

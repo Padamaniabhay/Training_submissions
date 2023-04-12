@@ -20,7 +20,7 @@ app.use("/order", orderRoutes);
 
 app.use((err, req, res, next) => {
   console.log(err);
-  return res.json({ message: "ERROR", ...err });
+  return res.status(500).json({ message: "ERROR", ...err });
 });
 
 app.listen(3000, async () => {

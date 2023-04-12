@@ -4,7 +4,7 @@ const sequelize = require("../Utils/sequelize");
 
 const getAllOrder = async (req, res, next) => {
   try {
-    return res.json(await Models.Order.findAll());
+    return res.status(200).json(await Models.Order.findAll());
   } catch (error) {
     return next(error);
   }
@@ -13,8 +13,8 @@ const getAllOrder = async (req, res, next) => {
 const getOrderById = async (req, res, next) => {
   try {
     const OrderItem = await Models.Order.findByPk(req.params.id);
-    if (!OrderItem) return res.json({ message: "order not found" });
-    return res.json({ OrderItem });
+    if (!OrderItem) return res.status(404).json({ message: "order not found" });
+    return res.status(200).json({ OrderItem });
   } catch (error) {
     return next(error);
   }
@@ -24,8 +24,8 @@ const getAllOrderByUserId = async (req, res, next) => {
   try {
     const user = await Models.User.findByPk(req.params.id);
     const OrderItem = await user.getOrders();
-    if (!OrderItem) return res.json({ message: "order not found" });
-    return res.json({ OrderItem });
+    if (!OrderItem) return res.status(404).json({ message: "order not found" });
+    return res.status(200).json({ OrderItem });
   } catch (error) {
     return next(error);
   }
@@ -50,7 +50,7 @@ const postNewOrder = async (req, res, next) => {
         { transaction: t }
       );
     });
-    return res.json({
+    return res.status(200).json({
       message: "Order created successfully!!",
       ...newOrder,
     });
@@ -64,8 +64,8 @@ const putUpadateOrder = async (req, res, next) => {
     const OrderItem = await Models.Order.update(req.body.order, {
       where: { id: req.params.id },
     });
-    if (!OrderItem) return res.json({ message: "Order not found" });
-    return res.json({ message: "order updated successfully" });
+    if (!OrderItem) return res.status(404).json({ message: "Order not found" });
+    return res.status(200).json({ message: "order updated successfully" });
   } catch (error) {
     return next(error);
   }
@@ -76,9 +76,11 @@ const deleteOrderById = async (req, res, next) => {
     const OrderItem = await Models.Order.findOne({
       where: { id: req.params.id },
     });
-    if (!OrderItem) return res.json({ message: "Order not found" });
+    if (!OrderItem) return res.status(404).json({ message: "Order not found" });
     await OrderItem.destroy();
-    return res.json({ message: "order deleted successfully", ...OrderItem });
+    return res
+      .status(200)
+      .json({ message: "order deleted successfully", ...OrderItem });
   } catch (error) {
     return next(error);
   }
@@ -90,8 +92,10 @@ const getUndeliveredOrders = async (req, res, next) => {
       where: { orderStatus: "undelivered" },
     });
     if (!undeliveredOrders)
-      return res.json({ message: "Orders not found which is undelivered" });
-    return res.json(undeliveredOrders);
+      return res
+        .status(404)
+        .json({ message: "Orders not found which is undelivered" });
+    return res.status(200).json(undeliveredOrders);
   } catch (error) {
     return next(error);
   }
@@ -103,8 +107,9 @@ const getMostRecentOrder = async (req, res, next) => {
       limit: 5,
       order: [["orderDate", "DESC"]],
     });
-    if (!mostRecentOrders) return res.json({ message: "Orders not found" });
-    return res.json(mostRecentOrders);
+    if (!mostRecentOrders)
+      return res.status(404).json({ message: "Orders not found" });
+    return res.status(200).json(mostRecentOrders);
   } catch (error) {
     return next(error);
   }
@@ -127,7 +132,7 @@ const getMostExpensiveOrder = async (req, res, next) => {
       limit: 1,
     });
 
-    return res.json({ orders });
+    return res.status(200).json({ orders });
   } catch (error) {
     return next(error);
   }
@@ -150,7 +155,7 @@ const getMostCheapestOrder = async (req, res, next) => {
       limit: 1,
     });
 
-    return res.json({ orders });
+    return res.status(200).json({ orders });
   } catch (error) {
     return next(error);
   }

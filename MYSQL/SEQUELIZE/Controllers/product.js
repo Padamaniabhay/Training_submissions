@@ -3,7 +3,7 @@ const Models = require("../Utils/Models");
 
 const getAllProduct = async (req, res, next) => {
   try {
-    return res.json(await Models.Product.findAll());
+    return res.status(200).json(await Models.Product.findAll());
   } catch (error) {
     next(error);
   }
@@ -12,8 +12,9 @@ const getAllProduct = async (req, res, next) => {
 const getProductById = async (req, res, next) => {
   try {
     const productItem = await Models.Product.findByPk(req.params.id);
-    if (!productItem) return res.json({ message: "prdouct not found" });
-    return res.json({ productItem });
+    if (!productItem)
+      return res.status(404).json({ message: "prdouct not found" });
+    return res.status(200).json({ productItem });
   } catch (error) {
     next(error);
   }
@@ -22,10 +23,10 @@ const getProductById = async (req, res, next) => {
 const postNewProduct = async (req, res, next) => {
   try {
     const user = await Models.User.findByPk(req.body.userID);
-    if (!user) return res.json({ message: "user not found" });
+    if (!user) return res.status(404).json({ message: "user not found" });
     const newProduct = await Models.Product.create(req.body.product);
     await newProduct.setUser(req.body.userID);
-    return res.json({
+    return res.status(200).json({
       message: "product created successfully!!",
       ...newProduct,
     });
@@ -39,8 +40,9 @@ const putUpadateProduct = async (req, res, next) => {
     const productItem = await Models.Product.update(req.body.product, {
       where: { id: req.params.id },
     });
-    if (!productItem[0]) return res.json({ message: "product not found" });
-    return res.json({ message: "prdouct updated successfully" });
+    if (!productItem[0])
+      return res.status(404).json({ message: "product not found" });
+    return res.status(200).json({ message: "prdouct updated successfully" });
   } catch (error) {
     next(error);
   }
@@ -51,8 +53,9 @@ const deleteProductById = async (req, res, next) => {
     const productItem = await Models.Product.destroy({
       where: { id: req.params.id },
     });
-    if (!productItem) return res.json({ message: "product not found" });
-    return res.json({
+    if (!productItem)
+      return res.status(404).json({ message: "product not found" });
+    return res.status(200).json({
       message: "product deleted successfully",
       ...productItem,
     });
@@ -63,7 +66,7 @@ const deleteProductById = async (req, res, next) => {
 
 const postSearchProduct = async (req, res, next) => {
   try {
-    return res.json(
+    return res.status(200).json(
       await Models.Product.findAll({
         where: {
           pname: {
@@ -84,8 +87,9 @@ const getProductByUserId = async (req, res, next) => {
         userId: req.params.id,
       },
     });
-    if (!products) return res.json({ message: "product not found" });
-    return res.json({ products });
+    if (!products)
+      return res.status(404).json({ message: "product not found" });
+    return res.status(200).json({ products });
   } catch (error) {
     return next(error);
   }
@@ -107,8 +111,8 @@ const getMostPurchasedProduct = async (req, res, next) => {
       limit: 5,
     });
     if (!mostPurchasedProduct)
-      return res.json({ message: "product not found" });
-    return res.json({ mostPurchasedProduct });
+      return res.status(404).json({ message: "product not found" });
+    return res.status(200).json({ mostPurchasedProduct });
   } catch (error) {
     return next(error);
   }
