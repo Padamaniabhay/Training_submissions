@@ -65,7 +65,13 @@ const memoryBtns = {
 type Sign = "+" | "-" | "*" | "/";
 type MathOperations = "sin" | "cos" | "tan" | "abs" | "sqrt";
 
-class Calculator {
+interface Calc {
+  input: HTMLInputElement;
+  output: HTMLInputElement;
+  evaluate(): void;
+}
+
+class Calculator implements Calc {
   input: HTMLInputElement;
   output: HTMLInputElement;
   OpenBracketCnt: number;
@@ -78,24 +84,24 @@ class Calculator {
     this.stack = [];
   }
 
-  clear() {
+  clear(): void {
     this.input.value = "";
     this.output.value = "";
     this.OpenBracketCnt = 0;
   }
 
-  backSpace() {
+  backSpace(): void {
     //condition for closing bracket count
     if (this.input.value.slice(-1) === ")") this.OpenBracketCnt++;
     this.input.value = this.input.value.slice(0, -1);
   }
 
-  addBrackets() {
+  addBrackets(): void {
     this.input.value += "(";
     this.OpenBracketCnt++;
   }
 
-  closeBrackets() {
+  closeBrackets(): void {
     if (this.OpenBracketCnt > 0) {
       this.input.value += ")";
       this.OpenBracketCnt--;
@@ -110,20 +116,20 @@ class Calculator {
     return n * this.fact(n - 1);
   }
 
-  appeandNumber(number: string) {
+  appeandNumber(number: string): void {
     this.input.value += number;
   }
 
-  appendInputstr(str: string) {
+  appendInputstr(str: string): void {
     this.input.value += str;
   }
 
-  appendOperation(sign: Sign) {
+  appendOperation(sign: Sign): void {
     this.input.value += sign;
   }
 
   //math operation like sin, cos, tan, sqrt which has operand and operation
-  mathOps(operation: MathOperations) {
+  mathOps(operation: MathOperations): string {
     this.output.value = Math[operation](parseFloat(this.input.value)).toFixed(
       2
     );
@@ -134,7 +140,7 @@ class Calculator {
   mathOpsWithReverse(
     realOps: "cosec" | "sec" | "cot",
     ops: "sin" | "cos" | "tan"
-  ) {
+  ): void {
     c.output.value = c
       .findPower(eval(Math[ops](parseFloat(c.input.value)).toString()), -1)
       .toString();
@@ -142,7 +148,7 @@ class Calculator {
   }
 
   //finding power(x^y)
-  findPower(x: number, y: number) {
+  findPower(x: number, y: number): number {
     return Math.pow(x, y);
   }
 
@@ -158,19 +164,19 @@ class Calculator {
       | "Math.exp"
       | "Math.ceil"
       | "Math.floor"
-  ) {
+  ): string {
     return str.replaceAll(findStr, () => {
       return toStr;
     });
   }
 
   //evaluating input string and display output
-  evaluate() {
+  evaluate(): void {
     try {
       const str = this.input.value;
 
       //factorial replacement
-      let newStr = str.replaceAll(/\d+\!/g, (x: string) => {
+      let newStr: string = str.replaceAll(/\d+\!/g, (x: string) => {
         const n = parseFloat(x.slice(0, -1));
         return this.fact(n).toString();
       });
@@ -197,7 +203,7 @@ class Calculator {
       newStr = this.replaceStr(newStr, "floor", "Math.floor");
 
       //x^y, x^2 replacement
-      newStr = newStr.replaceAll(/\d+\^\d+/g, (x: string) => {
+      newStr = newStr.replaceAll(/\d+\^\d+/g, (x: string): string => {
         return this.findPower(
           parseFloat(x.slice(0, x.indexOf("^"))),
           parseFloat(x.slice(x.indexOf("^") + 1))
@@ -211,29 +217,29 @@ class Calculator {
   }
 
   //memory operation functions
-  memoryStore = () => {
+  memoryStore = (): void => {
     this.stack.push(parseFloat(this.output.value));
     this.input.value = "0";
     console.log("Stack : ", this.stack);
   };
 
-  memoryRestore = () => {
+  memoryRestore = (): void => {
     this.input.value = this.stack.pop()?.toString()!;
     console.log("Stack : ", this.stack);
   };
 
-  memoryClear = () => {
+  memoryClear = (): void => {
     this.stack = [];
     console.log("Stack : ", this.stack);
   };
 
-  memoryPlus = () => {
+  memoryPlus = (): void => {
     this.input.value = "0";
     this.stack[this.stack.length - 1] += parseInt(this.output.value);
     console.log("Stack : ", this.stack);
   };
 
-  memoryMinus = () => {
+  memoryMinus = (): void => {
     this.input.value = "0";
     this.stack[this.stack.length - 1] -= parseInt(this.output.value);
     console.log("Stack : ", this.stack);
@@ -280,33 +286,33 @@ mathOps.eBtn.addEventListener("click", c.appendInputstr.bind(c, "e"));
 mathOps.factBtn.addEventListener("click", c.appendInputstr.bind(c, "!"));
 mathOps.modBtn.addEventListener("click", c.appendInputstr.bind(c, "%"));
 mathOps.absBtn.addEventListener("click", c.mathOps.bind(c, "abs"));
-mathOps.expBtn.addEventListener("click", () => {
+mathOps.expBtn.addEventListener("click", (): void => {
   c.appendInputstr("exp(");
   c.OpenBracketCnt++;
 });
-mathOps.ceilBtn.addEventListener("click", () => {
+mathOps.ceilBtn.addEventListener("click", (): void => {
   c.appendInputstr("ceil(");
   c.OpenBracketCnt++;
 });
-mathOps.floorBtn.addEventListener("click", () => {
+mathOps.floorBtn.addEventListener("click", (): void => {
   c.appendInputstr("floor(");
   c.OpenBracketCnt++;
 });
-mathOps.randBtn.addEventListener("click", () => {
+mathOps.randBtn.addEventListener("click", (): void => {
   c.output.value = Math.random().toString();
 });
 
-mathOps.logBtn.addEventListener("click", () => {
+mathOps.logBtn.addEventListener("click", (): void => {
   c.appendInputstr("log(");
   c.OpenBracketCnt++;
 });
-mathOps.lnBtn.addEventListener("click", () => {
+mathOps.lnBtn.addEventListener("click", (): void => {
   c.appendInputstr("ln(");
   c.OpenBracketCnt++;
 });
 
 //adding listner to all numbers using forEach
-numOperations.numbers.forEach((number) => {
+numOperations.numbers.forEach((number: Element): void => {
   number.addEventListener("click", c.appeandNumber.bind(c, number.innerHTML));
 });
 
@@ -327,7 +333,7 @@ numOperations.closeBracketsBtn.addEventListener(
 );
 
 //toggleing degree and radian button
-calcMainBtn.degBtn.addEventListener("click", () => {
+calcMainBtn.degBtn.addEventListener("click", (): void => {
   calcMainBtn.degBtn.innerHTML =
     calcMainBtn.degBtn.innerHTML === "RAD" ? "DEG" : "RAD";
   calcMainBtn.degBtn.style.backgroundColor = "#00FFFF";
@@ -336,7 +342,7 @@ calcMainBtn.degBtn.addEventListener("click", () => {
 });
 
 //dropdown event listners
-trigonometryBtn[0].addEventListener("click", () => {
+trigonometryBtn[0].addEventListener("click", (): void => {
   (trigonometryBtn[0].childNodes[3] as HTMLDivElement).classList.toggle(
     "visible"
   );
@@ -344,7 +350,7 @@ trigonometryBtn[0].addEventListener("click", () => {
     "grid-container sub-section";
 });
 
-functionBtn[0].addEventListener("click", () => {
+functionBtn[0].addEventListener("click", (): void => {
   (trigonometryBtn[0].childNodes[3] as HTMLDivElement).className =
     "grid-container sub-section";
   (functionBtn[0].childNodes[3] as HTMLDivElement).classList.toggle("visible");
