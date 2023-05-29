@@ -14,15 +14,12 @@ export class AuthGuard implements CanActivate {
   async canActivate(ctx: ExecutionContext) {
     try {
       const req = ctx.switchToHttp().getRequest<Request>();
-
       const token = req.headers["authorization"];
 
       if (!token) throw new UnauthorizedException("you are not authorized");
 
       const { user } = await this.JwtService.verifyAsync(token);
-
       req["user"] = user;
-
       return true;
     } catch (error) {
       throw new UnauthorizedException("token not verifed");

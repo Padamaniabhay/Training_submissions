@@ -8,9 +8,7 @@ import {
   Param,
   ParseIntPipe,
   Patch,
-  Post,
 } from "@nestjs/common";
-import { createUserDto } from "./dtos/create-user.dto";
 import { updateUserDto } from "./dtos/update-user.dto";
 import { UserService } from "./user.service";
 
