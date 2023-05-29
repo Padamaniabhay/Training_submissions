@@ -1,0 +1,62 @@
+# key-value pairs
+version: 2
+name: project1
+# boolean may be true, false, yes, no, on, off, y, Y, N, n
+isDeployed: true
+username: null
+
+#array
+persons: [abhay, person2, person3]
+fruits:
+  - apple
+  - orange
+  - banana
+
+# objects & nested object
+student:
+  name: person1
+  age: 30
+  isPassed: true
+  address:
+    city: Ahmedabad
+    state: Gujarat
+
+# array of object
+students:
+  - name: "abhay"
+    age: 20
+  - name: "person2"
+    age: 32
+
+# environment variable access
+database:
+  type: ${DB_TYPE}
+  port: ${DB_PORT}
+  dbname: mydb
+  username: root
+  password: root@123
+
+# multiline string
+message: |
+  this is multiple line message.
+  all the line breaks are preserved.
+  thank you.
+
+message2: >
+  this is multiple line message.
+  all the line breaks are not presereved.
+  it will be converted in single line.
+
+# anchors and alias
+person: &person
+  age: 20
+  gender: male
+
+abhay:
+  <<: *person
+  age: 22
+
+person2:
+  <<: *person
+  gender: female
+  state: gujarat
