@@ -1,0 +1,522 @@
+openapi: 3.0.0
+info:
+  title: swagger doc for express project
+  description: express project all end points documentation
+  version: 1.0
+
+servers:
+  - url: http://localhost:3000
+    description: on local Server
+
+schemes: [http]
+
+tags:
+  - name: Users
+    description: Operations related to users
+  - name: Reviews
+    description: Operations related to reviews
+  - name: Products
+    description: Operations related to products
+
+components:
+  User:
+    type: object
+    properties:
+      email:
+        type: email
+        example: abc@gmail.com
+      password:
+        type: string
+        example: password
+    required:
+      - email
+      - password
+  Responses:
+    ValidationFailed:
+      description: validation failed
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: validation message
+    UnAuthorized:
+      description: you are not authorized
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: invalid token
+
+paths:
+  # users routes
+  /user/login:
+    post:
+      tags:
+        - Users
+      summary: user login.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/User"
+      responses:
+        "200":
+          description:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  token:
+                    type: string
+                    example: efsdajk3454jsdfldsafjkw35hk43j5kj543jk54jkjksfajhkgfsjkejds
+        "404":
+          description: user not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: user not found
+        "401":
+          description: incorrect password
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: incorrect password
+        "403":
+          $ref: "#/components/Responses/ValidationFailed"
+  /user/register:
+    post:
+      tags:
+        - Users
+      summary: register user.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/User"
+      responses:
+        "201":
+          description:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  user:
+                    type: object
+                    properties:
+                      email:
+                        type: email
+                        example: abc@gmail.com
+                      password:
+                        type: string
+                        example: feasdj;ldfajklse345refd
+                      _id:
+                        type: string
+                        example: "647584c08331df63dd556991"
+        "403":
+          $ref: "#/components/Responses/ValidationFailed"
+
+  /user/productcount:
+    get:
+      tags:
+        - Users
+      summary: get all users with its product count.
+      responses:
+        "200":
+          description:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  users:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        total_products:
+                          type: integer
+                        product_name:
+                          type: array
+                          items:
+                            type: string
+                        email:
+                          type: string
+        "401":
+          $ref: "#/components/Responses/UnAuthorized"
+
+  /user/reviews:
+    get:
+      tags:
+        - Users
+      summary: get all reviews posted by user.
+      parameters:
+        - in: header
+          name: authToken
+          required: true
+          schema:
+            type: string
+          description: Access token for authentication
+      responses:
+        "200":
+          description:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  user:
+                    type: object
+                    properties:
+                      email:
+                        type: string
+                      reviews:
+                        type: array
+                    required:
+                      - email
+                      - reviews
+        "401":
+          $ref: "#/components/Responses/UnAuthorized"
+        "403":
+          $ref: "#/components/Responses/ValidationFailed"
+
+  # reviews
+  /review:
+    get:
+      tags:
+        - Reviews
+      summary: get all reviews.
+      parameters:
+        - in: query
+          name: page
+          schema:
+            type: string
+          description: page number
+        - in: query
+          name: limit
+          schema:
+            type: string
+          description: limit per page
+      responses:
+        "200":
+          description:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  reviews:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        total_products:
+                          type: integer
+                        product_name:
+                          type: array
+                          items:
+                            type: string
+                            example: product1
+                        email:
+                          type: string
+                          example: xyz@gmail.com
+        "400":
+          description: bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: page must be number
+
+  /review/new:
+    post:
+      tags:
+        - Reviews
+      summary: user login.
+      parameters:
+        - in: header
+          name: authToken
+          required: true
+          schema:
+            type: string
+          description: Access token for authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                review:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      example: good product
+                    body:
+                      type: string
+                      example: nice product must buy
+                    productId:
+                      type: string
+                      example: 647584c08331df63dd556991
+                  required:
+                    - name
+                    - body
+                    - productId
+              required:
+                - review
+      responses:
+        "201":
+          description:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  review:
+                    type: object
+                    properties:
+                      _id:
+                        type: string
+                        example: "647584c08331df63dd556991"
+                      userId:
+                        type: string
+                        example: "647584c08331df63dd556991"
+                      name:
+                        type: string
+                        example: good product
+                      body:
+                        type: string
+                        example: nice product must buy
+                required:
+                  - _id
+                  - userId
+                  - name
+                  - body
+
+        "401":
+          $ref: "#/components/Responses/UnAuthorized"
+        "403":
+          $ref: "#/components/Responses/ValidationFailed"
+  # products
+  /product:
+    get:
+      tags:
+        - Products
+      summary: get all products.
+      responses:
+        "200":
+          description: all the products
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  products:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        _id:
+                          type: string
+                          example: 6458b9207728c3cfc34d1783
+                        userId:
+                          type: string
+                          example: 6454ec242442cff495bfd355
+                        name:
+                          type: string
+                          example: pproduct 1
+                        description:
+                          type: string
+                          example: good pproduct
+                        price:
+                          type: integer
+                          example: 1224
+                      required:
+                        - _id
+                        - userId
+                        - name
+                        - description
+                        - price
+
+  /product/search:
+    get:
+      tags:
+        - Products
+      summary: search products.
+      parameters:
+        - name: search
+          in: query
+          required: true
+          description: searching text.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: matched products
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  products:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        _id:
+                          type: string
+                          example: 6458b9207728c3cfc34d1783
+                        userId:
+                          type: string
+                          example: 6454ec242442cff495bfd355
+                        name:
+                          type: string
+                          example: pproduct 1
+                        description:
+                          type: string
+                          example: good pproduct
+                        price:
+                          type: integer
+                          example: 1224
+                      required:
+                        - _id
+                        - userId
+                        - name
+                        - description
+                        - price
+
+  /product/new:
+    post:
+      tags:
+        - Products
+      summary: create now product.
+      parameters:
+        - in: header
+          name: authToken
+          required: true
+          schema:
+            type: string
+          description: Access token for authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                product:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      example: product name
+                    description:
+                      type: string
+                      example: good in this price
+                    price:
+                      type: number
+                      example: 122
+                  required:
+                    - name
+                    - description
+                    - price
+              required:
+                - review
+      responses:
+        "201":
+          description:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  review:
+                    type: object
+                    properties:
+                      _id:
+                        type: string
+                        example: "647584c08331df63dd556991"
+                      userId:
+                        type: string
+                        example: "647584c08331df63dd556991"
+                      name:
+                        type: string
+                        example: product name
+                      description:
+                        type: string
+                        example: good in this price
+                      price:
+                        type: number
+                        example: 122
+                    required:
+                      - name
+                      - description
+                      - price
+                      - _id
+                      - userId
+        "401":
+          $ref: "#/components/Responses/UnAuthorized"
+        "403":
+          $ref: "#/components/Responses/ValidationFailed"
