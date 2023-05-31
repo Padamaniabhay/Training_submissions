@@ -60,10 +60,11 @@ export class OrderService {
   async getAllOrders(user: User) {
     const queryBuilder = this.orderRepo.createQueryBuilder("order");
 
-    const orders = queryBuilder
-      .leftJoinAndSelect("order.products", "product")
-      .where("order.userId = :id", { id: user.id })
+    const orders = await queryBuilder
+      .where("order.user = :id", { id: user.id })
+      .leftJoinAndSelect("order.products", "products")
       .getMany();
+    console.log(orders);
 
     return orders;
   }

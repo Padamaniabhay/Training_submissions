@@ -11,11 +11,17 @@ import {
 } from "@nestjs/common";
 import { updateUserDto } from "./dtos/update-user.dto";
 import { UserService } from "./user.service";
+import { ApiBody, ApiParam, ApiTags } from "@nestjs/swagger";
 
+@ApiTags("User")
 @Controller("user")
 export class UserController {
   constructor(private userService: UserService) {}
 
+  @ApiParam({
+    name: "id",
+    example: 1,
+  })
   @Get(":id")
   getUserById(
     @Param(
@@ -39,11 +45,36 @@ export class UserController {
     return this.userService.getAllUsers();
   }
 
+  @ApiParam({
+    name: "id",
+    example: 1,
+  })
   @Delete(":id")
   deleteUserById(@Param("id", ParseIntPipe) id: number) {
     return this.userService.removeUser(id);
   }
 
+  @ApiParam({
+    name: "id",
+    example: 1,
+  })
+  @ApiBody({
+    schema: {
+      type: "object",
+      properties: {
+        email: { type: "string" },
+        password: { type: "string" },
+      },
+    },
+    examples: {
+      example1: {
+        value: {
+          email: "xyz@gmail.com",
+          password: "xyz@123",
+        },
+      },
+    },
+  })
   @Patch(":id")
   updateUser(
     @Param("id", ParseIntPipe) id: number,

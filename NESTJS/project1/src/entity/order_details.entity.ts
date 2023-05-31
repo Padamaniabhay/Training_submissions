@@ -12,4 +12,4 @@ export class Order_details {
   quantity: number;
 }
 
-export const OrderDetails = Order_details.name;
+export const OrderDetails = Order_details.name.toLocaleLowerCase();
