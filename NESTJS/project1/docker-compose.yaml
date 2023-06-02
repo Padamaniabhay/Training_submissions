@@ -1,0 +1,16 @@
+version: "3"
+services:
+  database:
+    image: postgres
+    ports:
+      - "5000:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=abhay
+      - POSTGRES_DB=nestproject
+  nestapp:
+    build: "."
+    ports:
+      - "3000:3000"
+    depends_on:
+      - "database"
