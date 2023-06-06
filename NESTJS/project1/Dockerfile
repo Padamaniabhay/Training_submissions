@@ -1,6 +1,7 @@
-FROM node
+FROM node:18
 WORKDIR /app
+COPY package.json .
+RUN  npm i
 COPY . .
-RUN npm install
+CMD ["npm" ,"run","start:dev" ]
 EXPOSE 3000
-CMD ["npm" ,"run","start" ]
