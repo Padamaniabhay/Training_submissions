@@ -1,0 +1,25 @@
+version: "3"
+services:
+  db:
+    image: mongo
+    # environment:
+    # - MONGO_INITDB_ROOT_USERNAME=abhay
+    # - MONGO_INITDB_ROOT_PASSWORD=abhay
+    #   - MONGO_INITDB_DATABASE=db
+    # env_file:
+    #   - .env
+    volumes:
+      - mongovolume:/data/db
+  nodeexpress:
+    build: "."
+    ports:
+      # - "${PORT}:${PORT}"
+      - "3000:3000"
+    # volumes:
+    # - ./src:/app/src #for rebuild on file change
+    env_file:
+      - .env
+    depends_on:
+      - db
+volumes:
+  mongovolume:

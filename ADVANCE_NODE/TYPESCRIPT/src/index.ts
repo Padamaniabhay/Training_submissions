@@ -34,8 +34,11 @@ app.use(
 app.listen(process.env.PORT, async () => {
   try {
     await connectDB();
+
     console.log("Server is Up and Running");
   } catch (error) {
+    console.log(error);
+
     console.log("DB connection Failed ");
   }
 });
