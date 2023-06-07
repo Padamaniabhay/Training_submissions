@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
+import * as mongoose from "mongoose";
 
-const productSchema = mongoose.Schema({
+const productSchema = new mongoose.Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
@@ -20,5 +20,4 @@ const productSchema = mongoose.Schema({
   },
 });
 productSchema.index({ name: "text", description: "text" });
-const Product = mongoose.model("Product", productSchema);
-module.exports = Product;
+export const Product = mongoose.model("Product", productSchema);
