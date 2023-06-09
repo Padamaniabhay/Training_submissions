@@ -7,7 +7,7 @@ import userRoutes from "./Routes/user.routes";
 import productRoutes from "./Routes/product.routes";
 import reviewRoutes from "./Routes/review.routes";
 
-const app = express();
+export const app = express();
 
 // middleware
 app.use(bodyParser.urlencoded({ extended: false }));

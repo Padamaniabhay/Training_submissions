@@ -9,6 +9,7 @@ import { validateProductData } from "../Middlewares/validateProductData";
 
 const router = express.Router();
 
+// mkmkmk
 router.post("/", verifyUser, validateProductData, createProduct);
 router.get("/", getAllProduct);
 router.get("/search", searchProduct);

@@ -1,47 +1,33 @@
-import { NextFunction, Request, Response } from "express";
-import { Product } from "../Models/Product";
-import { CustomError, CustomRequest, QueryParams } from "../Utils/type";
+const Product = require("../Models/Product");
 
-export const createProduct = async (
-  req: CustomRequest,
-  res: Response,
-  next: NextFunction
-) => {
+const createProduct = async (req, res, next) => {
   try {
-    if (req.user) {
-      const product = await Product.create({
-        ...req.body.product,
-        userId: req.user._id,
-      });
-      return res.status(201).json({ success: true, product });
-    }
-    const error: CustomError = new Error("user not found");
-    error.status = 400;
-    throw error;
+    const product = await Product.create({
+      ...req.body.product,
+      userId: req.user._id,
+    });
+    delete product._doc.__v;
+    return res.status(201).json({ success: true, product });
   } catch (error) {
     return next(error);
   }
 };
 
-export const getAllProduct = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+const getAllProduct = async (req, res, next) => {
   try {
-    const { page: _page = "1", limit: _limit = "5" }: QueryParams = req.query;
+    let { page = 1, limit = 5 } = req.query;
 
-    let page: number = parseInt(_page);
-    let limit: number = parseInt(_limit);
+    page = parseInt(page);
+    limit = parseInt(limit);
 
     if (Number.isNaN(page)) {
-      const error: CustomError = new Error("Page number must be in digit");
+      const error = new Error("Page number must be in digit");
       error.status = 400;
       throw error;
     }
 
     if (Number.isNaN(limit)) {
-      const error: CustomError = new Error("limit must be in digit");
+      const error = new Error("limit must be in digit");
       error.status = 400;
       throw error;
     }
@@ -80,19 +66,14 @@ export const getAllProduct = async (
   }
 };
 
-export const searchProduct = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+const searchProduct = async (req, res, next) => {
   try {
     if (!req.query.search) {
-      const error: CustomError = new Error("please provide search text");
+      const error = new Error("please provide search text");
       error.status = 400;
       throw error;
     }
-    const { search: searchText }: QueryParams = req.query;
-
+    const searchText = req.query.search;
     const products = await Product.aggregate([
       {
         $match: { $text: { $search: searchText } },
@@ -119,8 +100,12 @@ export const searchProduct = async (
         },
       },
     ]);
-    return res.status(201).json({ success: true, products });
+    return res
+      .status(201)
+      .json({ success: true, products: products[0].products });
   } catch (error) {
     return next(error);
   }
 };
+
+module.exports = { getAllProduct, searchProduct, createProduct };

@@ -45,7 +45,18 @@ const getAllProduct = (req, res, next) => __awaiter(void 0, void 0, void 0, func
             {
                 $facet: {
                     totalCount: [{ $count: "count" }],
-                    products: [{ $skip: (page - 1) * limit }, { $limit: limit }],
+                    products: [
+                        { $skip: (page - 1) * limit },
+                        { $limit: limit },
+                        {
+                            $project: {
+                                _id: 0,
+                                name: 1,
+                                price: 1,
+                                description: 1,
+                            },
+                        },
+                    ],
                 },
             },
             {
@@ -55,7 +66,9 @@ const getAllProduct = (req, res, next) => __awaiter(void 0, void 0, void 0, func
                 },
             },
         ]);
-        return res.status(201).json({ success: true, products });
+        return res
+            .status(200)
+            .json({ success: true, products: products[0].products });
     }
     catch (error) {
         return next(error);
@@ -77,7 +90,16 @@ const searchProduct = (req, res, next) => __awaiter(void 0, void 0, void 0, func
             {
                 $facet: {
                     totalCount: [{ $count: "count" }],
-                    products: [],
+                    products: [
+                        {
+                            $project: {
+                                _id: 0,
+                                name: 1,
+                                price: 1,
+                                description: 1,
+                            },
+                        },
+                    ],
                 },
             },
             {
