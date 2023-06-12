@@ -6,7 +6,6 @@ const createProduct = async (req, res, next) => {
       ...req.body.product,
       userId: req.user._id,
     });
-    delete product._doc.__v;
     return res.status(201).json({ success: true, product });
   } catch (error) {
     return next(error);
@@ -19,7 +18,6 @@ const getAllProduct = async (req, res, next) => {
 
     page = parseInt(page);
     limit = parseInt(limit);
-
     if (Number.isNaN(page)) {
       const error = new Error("Page number must be in digit");
       error.status = 400;
@@ -101,7 +99,7 @@ const searchProduct = async (req, res, next) => {
       },
     ]);
     return res
-      .status(201)
+      .status(200)
       .json({ success: true, products: products[0].products });
   } catch (error) {
     return next(error);

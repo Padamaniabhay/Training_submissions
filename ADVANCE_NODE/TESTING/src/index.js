@@ -1,5 +1,5 @@
 const express = require("express");
-require("dotenv").config();
+require("dotenv").config({ path: `.env.${process.env.NODE_ENV}` });
 const bodyParser = require("body-parser");
 
 const connectDB = require("./Utils/connection");
@@ -29,6 +29,7 @@ app.listen(process.env.PORT, async () => {
     await connectDB();
     console.log("Server is Up and Running");
   } catch (error) {
+    console.log(error);
     console.log("DB connection Failed ");
   }
 });
