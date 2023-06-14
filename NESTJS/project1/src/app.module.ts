@@ -27,7 +27,7 @@ import { DB_TYPE } from "./common/const";
           username: config.get("DATABASE.USER"),
           password: config.get("DATABASE.PASSWORD"),
           database: config.get("DATABASE.NAME"),
-          entities: ["dist/**/*.entity{.ts,.js}"],
+          entities: [__dirname + "/../**/*.entity{.ts,.js}"],
           synchronize: true,
         };
       },

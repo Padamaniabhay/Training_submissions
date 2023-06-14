@@ -1,24 +1,59 @@
 import { Test, TestingModule } from "@nestjs/testing";
-import { INestApplication } from "@nestjs/common";
+import { INestApplication, ValidationPipe } from "@nestjs/common";
 import * as request from "supertest";
 import { AppModule } from "../src/app.module";
+import { TypeORMExceptionFilter } from "src/filter/typeorm.filter";
+import { createUserDto } from "src/modules/user/dtos/create-user.dto";
+import { getConnection } from "typeorm";
+import { UserService } from "src/modules/user/user.service";
 
 describe("AppController (e2e)", () => {
   let app: INestApplication;
-
-  beforeEach(async () => {
+  let userDto: createUserDto = {
+    email: "xyz12@gmail.com",
+    password: "password",
+  };
+  beforeAll(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [AppModule],
     }).compile();
 
     app = moduleFixture.createNestApplication();
+    app.useGlobalPipes(
+      new ValidationPipe({ transform: true, whitelist: true }),
+    );
+    app.useGlobalFilters(new TypeORMExceptionFilter());
+    await moduleFixture.get("UserRepository").delete({});
     await app.init();
   });
 
-  it("/ (GET)", () => {
+  it("/auth/signup (POST)", () => {
     return request(app.getHttpServer())
-      .get("/")
-      .expect(200)
-      .expect("Hello World!");
+      .post("/auth/signup")
+      .send(userDto)
+      .expect(201)
+      .then((res) => {
+        expect(res.body).toEqual(
+          expect.objectContaining({
+            email: expect.any(String),
+            password: expect.any(String),
+            id: expect.any(Number),
+          }),
+        );
+      });
+  });
+
+  it("/auth/signin (POST)", () => {
+    return request(app.getHttpServer())
+      .post("/auth/signin")
+      .send(userDto)
+      .expect(201)
+      .then((res) => {
+        expect(res.body).toEqual(
+          expect.objectContaining({
+            token: expect.any(String),
+          }),
+        );
+      });
   });
 });

@@ -10,6 +10,8 @@ services:
       - .env
     volumes:
       - postgres:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
   nestapp:
     build: "."
     ports:
@@ -17,6 +19,6 @@ services:
     depends_on:
       - database
     volumes:
-      - ./src:/app/src #for rebuild on file change
+      - ./:/app/ #for rebuild on file change
 volumes:
   postgres:

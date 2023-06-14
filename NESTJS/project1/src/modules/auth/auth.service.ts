@@ -17,6 +17,7 @@ export class AuthService {
   ) {}
 
   async signUp(user: createUserDto) {
+    console.log(await this.userService.findByEmail(user.email));
     if (await this.userService.findByEmail(user.email)) {
       throw new BadRequestException("email in use, pleade sign in");
     }
