@@ -4,8 +4,6 @@ import * as request from "supertest";
 import { AppModule } from "../src/app.module";
 import { TypeORMExceptionFilter } from "src/filter/typeorm.filter";
 import { createUserDto } from "src/modules/user/dtos/create-user.dto";
-import { getConnection } from "typeorm";
-import { UserService } from "src/modules/user/user.service";
 
 describe("AppController (e2e)", () => {
   let app: INestApplication;
@@ -27,33 +25,29 @@ describe("AppController (e2e)", () => {
     await app.init();
   });
 
-  it("/auth/signup (POST)", () => {
-    return request(app.getHttpServer())
+  it("/auth/signup (POST)", async () => {
+    const res = await request(app.getHttpServer())
       .post("/auth/signup")
       .send(userDto)
-      .expect(201)
-      .then((res) => {
-        expect(res.body).toEqual(
-          expect.objectContaining({
-            email: expect.any(String),
-            password: expect.any(String),
-            id: expect.any(Number),
-          }),
-        );
-      });
+      .expect(201);
+    expect(res.body).toEqual(
+      expect.objectContaining({
+        email: expect.any(String),
+        password: expect.any(String),
+        id: expect.any(Number),
+      }),
+    );
   });
 
-  it("/auth/signin (POST)", () => {
-    return request(app.getHttpServer())
+  it("/auth/signin (POST)", async () => {
+    const res = await request(app.getHttpServer())
       .post("/auth/signin")
       .send(userDto)
-      .expect(201)
-      .then((res) => {
-        expect(res.body).toEqual(
-          expect.objectContaining({
-            token: expect.any(String),
-          }),
-        );
-      });
+      .expect(201);
+    expect(res.body).toEqual(
+      expect.objectContaining({
+        token: expect.any(String),
+      }),
+    );
   });
 });

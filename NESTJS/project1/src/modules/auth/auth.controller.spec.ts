@@ -31,13 +31,13 @@ describe("AuthController", () => {
     expect(controller).toBeDefined();
   });
 
-  it("user sign up", () => {
-    const user = controller.signUp(userDto);
+  it("user sign up", async () => {
+    const user = await controller.signUp(userDto);
     expect(user).toEqual(userDto);
   });
 
-  it("user sign in", () => {
-    const token = controller.signIn(userDto);
+  it("user sign in", async () => {
+    const token = await controller.signIn(userDto);
     expect(token).toEqual({
       token: "dsfkjlrfdsajt543ljhdhsaskuea",
     });
