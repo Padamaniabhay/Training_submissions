@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<books>
+	<book id="1">
+		<title>Rich Dad Poor Dad</title>
+        <authors>
+		    <author id="1">Robert Kiyosaki</author>
+		    <author id="2">Sharon Lechter</author>
+        </authors>
+		<country>England</country>
+		<language>English</language>
+		<pages>391</pages>
+		<year>1997</year>
+	</book>
+	<book id="2">
+		<title>Stories</title>
+		<author id="3">Anton Chekhov</author>
+		<country>Russia</country>
+		<language>Russian</language>
+		<pages>194</pages>
+		<year>1886</year>
+	</book>
+	<book id="3">
+		<title>Beyond Good and Evil</title>
+		<author id="4">Friedrich Nietzsche</author>
+		<country>Germany</country>
+		<language>German</language>
+		<pages>240</pages>
+		<year>1886</year>
+	</book>
+	<book id="4">
+		<title>Sapiens: A Brief History of Humankind</title>
+		<author id="5">Yuval Noah Harari</author>
+		<country>israel</country>
+		<language>Hebrew</language>
+		<pages>512</pages>
+		<year>2011</year>
+	</book>
+	<book id="5">
+		<title>Diplomacy</title>
+		<author id="6">Henry Kissinger</author>
+		<country>USA</country>
+		<language>English</language>
+		<pages>912</pages>
+		<year>1994</year>
+	</book>
+	<book id="6">
+		<title>Mein Kampf</title>
+		<author id="7">Adolf Hitler</author>
+		<country>Germany</country>
+		<language>German</language>
+		<pages>720</pages>
+		<year>1925</year>
+	</book>
+</books>
